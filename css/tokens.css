@@ -1,0 +1,63 @@
+/* =========================================
+   DESIGN TOKENS — Акцент v2
+   ========================================= */
+
+:root {
+    /* Палитра */
+    --brand-red-500: #C41E3A;
+    --brand-red-700: #93162C;
+    --brand-red-900: #5C0E1C;
+
+    --gray-50: #F8F9FA;
+    --gray-100: #F1F3F5;
+    --gray-200: #E9ECEF;
+    --gray-400: #CED4DA;
+    --gray-600: #868E96;
+    --gray-800: #343A40;
+    --gray-900: #212529;
+    --white: #FFFFFF;
+
+    /* Семантика */
+    --color-primary-base: var(--brand-red-500);
+    --color-primary-hover: var(--brand-red-700);
+    --color-text-main: var(--gray-800);
+    --color-text-heading: var(--gray-900);
+    --color-text-muted: var(--gray-600);
+    --color-text-inverse: var(--white);
+    --color-border-default: var(--gray-200);
+
+    /* Типографика */
+    --font-sans: 'Inter', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+
+    --text-h1: clamp(32px, 5vw, 56px);
+    --text-h2: clamp(24px, 4vw, 40px);
+    --text-h3: clamp(20px, 3vw, 32px);
+    --text-body-lg: 18px;
+    --text-body-base: 16px;
+    --text-body-sm: 14px;
+    --text-caption: 12px;
+
+    /* Отступы системы 8px */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-4: 24px;
+    --space-6: 48px;
+    --space-8: 64px;
+    --space-10: 96px;
+
+    /* Контейнеры */
+    --container-padding: clamp(24px, 8vw, 120px);
+    --radius-sm: 4px;
+    --radius-md: 6px;
+
+    /* Специфичные токены для частиц (Particles) */
+    --particle-opacity: 0.12;
+    --particle-accent: var(--brand-red-500);
+    --particle-base: var(--gray-600);
+    --particle-speed: 0.1;
+    --particle-bloom: 0.5;
+
+    /* Тени и фокусы */
+    --btn-focus-shadow: 0 0 0 3px rgba(196, 30, 58, 0.3);
+}

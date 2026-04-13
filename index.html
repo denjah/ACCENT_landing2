@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Акцент — Стратегический поставщик микроэлектроники</title>
+
+    <!-- Шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Three.js Import Map -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+</head>
+
+<body>
+
+    <!-- 1. HEADER -->
+    <header class="header">
+        <div class="wide-container">
+            <div class="logo">
+                <img src="assets/images/SVG_logo/ACCENT_LOGO_Горизонтальный_белый.svg" alt="АКЦЕНТ">
+            </div>
+            <div class="header-contacts">
+                <a href="tel:+78122700367">+7 (812) 270-03-67</a>
+                <a href="mailto:info@accentcomponent.ru">info@accentcomponent.ru</a>
+                <button class="btn btn-primary" style="padding: 8px 20px; font-size: 12px;">Загрузить BOM</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. HERO SLIDER -->
+    <section class="hero" id="hero">
+        <div class="hero-pattern"></div>
+        <div id="particles-background"></div>
+        <div class="slides-track" id="track">
+
+            <!-- Slide 1: Offer 1 -->
+            <div class="slide">
+                <div class="wide-container">
+                    <div class="slide-content">
+                        <div class="section-tag">Комплексные поставки</div>
+                        <h1>Комплексные поставки микроэлектроники из Китая, США и Европы — <em>без срывов и
+                                простоев</em></h1>
+                        <p class="slide-sub">Закрываем любые дефициты: санкционные, сложные, снятые с производства,
+                            аллокационные — для ответственного применения</p>
+                        <ul class="slide-list">
+                            <li>Доставка от 5 дней — ускоренная логистика под заказ</li>
+                            <li>Подбор аналога с отчётом за 72 часа</li>
+                            <li>Работа со сложными позициями: санкционные бренды, EOL, редкие компоненты</li>
+                            <li>Ответ на запрос в течение 1 часа</li>
+                        </ul>
+                        <button class="btn btn-primary">Загрузить BOM</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Offer 2 -->
+            <div class="slide">
+                <div class="wide-container">
+                    <div class="slide-content">
+                        <div class="section-tag">Надёжные соединители</div>
+                        <h1>Надёжные соединители — <em>залог стабильной работы ваших устройств!</em></h1>
+                        <p class="slide-sub">Оригинальные соединители от ведущих мировых брендов под проект</p>
+                        <p class="slide-list-label">Бренды:</p>
+                        <div class="brand-chip-group">
+                            <span class="brand-chip">Amphenol</span>
+                            <span class="brand-chip">FCI</span>
+                            <span class="brand-chip">ITT</span>
+                            <span class="brand-chip">JAE</span>
+                            <span class="brand-chip">HRS</span>
+                            <span class="brand-chip">JST</span>
+                            <span class="brand-chip">MOLEX</span>
+                            <span class="brand-chip">SAMTEC</span>
+                            <span class="brand-chip">HARWIN</span>
+                            <span class="brand-chip">WAGO</span>
+                            <span class="brand-chip">WÜRTH</span>
+                            <span class="brand-chip">YAZAKI</span>
+                            <span class="brand-chip">DELPHI</span>
+                            <span class="brand-chip">ETE</span>
+                        </div>
+                        <ul class="slide-list">
+                            <li>100% оригинальная продукция</li>
+                            <li>Полный цикл сопровождения: от подбора до входного контроля и отгрузки</li>
+                            <li>Работа по договору с фиксацией цен, сроков и ответственности</li>
+                            <li>Гибкий объём: от единичных прототипов до серийных поставок с резервированием стока</li>
+                        </ul>
+                        <button class="btn btn-primary">Загрузить спецификацию</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Offer 3 -->
+            <div class="slide">
+                <div class="wide-container">
+                    <div class="slide-content">
+                        <div class="section-tag">Для БПЛА</div>
+                        <h1>Комплектующие для <em>БПЛА под заказ</em></h1>
+                        <p class="slide-sub">Поставка критически важных компонентов для беспилотных систем</p>
+                        <ul class="slide-list">
+                            <li>Подбор аналогов и кросс-референсы</li>
+                            <li>Широкий ассортимент комплектующих для беспилотных систем</li>
+                            <li>Гибкие условия поставки и индивидуальный подход</li>
+                        </ul>
+                        <button class="btn btn-primary">Подобрать комплектующие</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="slider-nav">
+            <div class="wide-container">
+                <div class="dots" id="dots">
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <div class="arrows">
+                    <button class="arrow" id="prev">←</button>
+                    <button class="arrow" id="next">→</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. О КОМПАНИИ (3 покзателя) -->
+    <div class="stats-bar">
+        <div class="wide-container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-val"><span>10</span>+</div>
+                    <div class="stat-txt">Лет на рынке</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-val"><span>70</span>+</div>
+                    <div class="stat-txt">Брендов</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-val"><span>20</span>+</div>
+                    <div class="stat-txt">Санкционных брендов в доступе</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. ПОЗИЦИОНИРОВАНИЕ И МИССИЯ -->
+    <section class="fade-in">
+        <div class="wide-container">
+            <div class="mission-grid">
+                <div class="pos-info">
+                    <div class="section-tag">Позиционирование</div>
+                    <h2>Стратегический партнер</h2>
+                    <p class="pos-text">«Акцент» — стратегический поставщик микроэлектроники для ответственных отраслей.
+                        Мы не просто закрываем заявки на компоненты, а берём на себя ответственность за цепочку
+                        поставок: от поиска и верификации подлинности до сертифицированной логистики и инженерной
+                        поддержки. Работаем с проектами, где срыв поставки или несоответствие компонента недопустимы.
+                    </p>
+                </div>
+                <div class="mission-card">
+                    <div class="section-tag" style="margin-bottom: 12px;">Миссия</div>
+                    <h3>Бесперебойное развитие</h3>
+                    <p style="font-size: 15px; color: var(--gray-800); margin-bottom: 0;">Обеспечивать бесперебойное
+                        развитие и производство высокотехнологичной продукции в России и СНГ, предоставляя
+                        гарантированный доступ к оригинальной микроэлектронике мировых производителей, преодолевая
+                        логистические, регуляторные и аллокационные барьеры.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. УТП -->
+    <section class="utp-section fade-in">
+        <div class="wide-container">
+            <div class="utp-grid">
+                <div class="utp-main">
+                    Закрываем дефициты микроэлектроники, соединителей и комплектующих для БПЛА с ответом <em>за 2
+                        часа</em> и доставкой от 5 дней.
+                </div>
+                <div class="utp-list">
+                    <div class="utp-item">
+                        <div class="utp-num">01</div>
+                        <div class="utp-info">Прямой доступ к санкционным, сложным, снятым с производства и
+                            аллокационным позициям</div>
+                    </div>
+                    <div class="utp-item">
+                        <div class="utp-num">02</div>
+                        <div class="utp-info">Подбор аналога с техотчётом за 72 часа</div>
+                    </div>
+                    <div class="utp-item">
+                        <div class="utp-num">03</div>
+                        <div class="utp-info">Оптимизация затрат и бесперебойная работа производства</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. ПРОИЗВОДИТЕЛИ -->
+    <section class="fade-in">
+        <div class="wide-container">
+            <div class="section-tag">Производители</div>
+            <h2>Официальные поставки от ведущих мировых производителей</h2>
+            <p class="section-subhead">Доступ к продукции глобальных брендов</p>
+
+            <div class="manufacturers-grid">
+                <div class="man-box">Amphenol</div>
+                <div class="man-box">FCI</div>
+                <div class="man-box">ITT</div>
+                <div class="man-box">JAE</div>
+                <div class="man-box">HRS</div>
+                <div class="man-box">JST</div>
+                <div class="man-box">MOLEX</div>
+                <div class="man-box">SAMTEC</div>
+                <div class="man-box">HARWIN</div>
+                <div class="man-box">WAGO</div>
+                <div class="man-box">WÜRTH</div>
+                <div class="man-box">YAZAKI</div>
+                <div class="man-box">DELPHI</div>
+                <div class="man-box">ETE</div>
+            </div>
+
+            <div style="margin-top: 50px; text-align: center;">
+                <button class="btn btn-outline">Скачать полный список производителей</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. ЭКСПЕРТНОСТЬ -->
+    <section class="fade-in" style="background: var(--gray-50);">
+        <div class="wide-container">
+            <div class="section-tag">Экспертность</div>
+            <div class="exp-grid">
+                <div class="exp-card">
+                    <span class="exp-num">SEC 01</span>
+                    <h3>Работа с ВПК и предприятиями</h3>
+                    <p>Многолетний опыт поставок для промышленных предприятий и структур ВПК.</p>
+                </div>
+                <div class="exp-card">
+                    <span class="exp-num">SEC 02</span>
+                    <h3>Сертификаты</h3>
+                    <p>Полное соответствие стандартам качества и наличие всех необходимых сертификатов.</p>
+                </div>
+                <div class="exp-card">
+                    <span class="exp-num">SEC 03</span>
+                    <h3>Альтернативная логистика</h3>
+                    <p>Опыт работы с санкционной продукцией и собственные отработанные маршруты.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. ПРЕИМУЩЕСТВА -->
+    <section class="fade-in">
+        <div class="wide-container">
+            <div class="section-tag">Наши преимущества</div>
+            <div class="adv-grid">
+                <div class="adv-card">
+                    <h4>Работа с дефицитом</h4>
+                    <p>EOL, санкционка, аллокационные</p>
+                </div>
+                <div class="adv-card">
+                    <h4>Финансовая гибкость</h4>
+                    <p>Индивидуальные условия оплаты</p>
+                </div>
+                <div class="adv-card">
+                    <h4>Широкий ассортимент</h4>
+                    <p>Более 70 ведущих мировых брендов</p>
+                </div>
+                <div class="adv-card">
+                    <h4>Ускоренная логистика</h4>
+                    <p>Доставка от 5 дней под заказ</p>
+                </div>
+                <div class="adv-card">
+                    <h4>Входной контроль</h4>
+                    <p>Верификация подлинности компонентов</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. СХЕМА РАБОТЫ -->
+    <section class="fade-in" style="background: var(--gray-900); color: var(--white); border-bottom: none;">
+        <div class="wide-container">
+            <div class="section-tag">Процесс</div>
+            <h2>Как мы работаем</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-circle">01</div>
+                    <h4>Заявка</h4>
+                    <p>Документ или письмо</p>
+                </div>
+                <div class="step">
+                    <div class="step-circle">02</div>
+                    <h4>Подбор</h4>
+                    <p>Чип с лупой</p>
+                </div>
+                <div class="step">
+                    <div class="step-circle">03</div>
+                    <h4>Договор</h4>
+                    <p>Договор и оплата</p>
+                </div>
+                <div class="step">
+                    <div class="step-circle">04</div>
+                    <h4>Доставка</h4>
+                    <p>Самолёт или грузовик</p>
+                </div>
+                <div class="step">
+                    <div class="step-circle">00</div>
+                    <h4>Поддержка</h4>
+                    <p>Документы и сопровождение</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. ФОРМА BOM -->
+    <section class="form-area fade-in">
+        <div class="wide-container">
+            <div class="form-split">
+                <div>
+                    <div class="section-tag">Заявка</div>
+                    <h2>Загрузите ваш BOM-файл</h2>
+                    <p style="font-size: 18px;">Получите расчет спецификации <em>в течение 1 часа</em>.</p>
+                </div>
+                <div class="form-main">
+                    <form id="bomForm">
+                        <div class="form-inputs">
+                            <div class="input-group">
+                                <label>Ваше имя *</label>
+                                <input type="text" placeholder="Иван Иванов" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Компания</label>
+                                <input type="text" placeholder="ООО Электроникс">
+                            </div>
+                            <div class="input-group">
+                                <label>Телефон *</label>
+                                <input type="tel" placeholder="+7 (___) ___-__-__" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Email *</label>
+                                <input type="email" placeholder="mail@example.com" required>
+                            </div>
+                            <div class="input-group full">
+                                <label>Прикрепить файл (BOM)</label>
+                                <div class="dropzone">
+                                    <p>Перетащите файл (.xls, .xlsx, .csv, .pdf) или <strong>нажмите здесь</strong></p>
+                                    <p class="dropzone-hint">Максимальный размер: 10 МБ</p>
+                                </div>
+                            </div>
+                            <div class="input-group full" style="margin-top: 10px;">
+                                <button class="btn btn-primary" type="submit">ОТПРАВИТЬ ЗАЯВКУ</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="wide-container">
+            <!-- Col 1: Contacts & Social -->
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 20px;">
+                    <img src="assets/images/SVG_logo/ACCENT_LOGO_Горизонтальный.svg" alt="АКЦЕНТ">
+                </div>
+                <div class="footer-contact-info">
+                    <p><strong>+7 (812) 270-03-67</strong></p>
+                    <p><a href="mailto:info@accentcomponent.ru">info@accentcomponent.ru</a></p>
+                    <p style="margin-top: 10px; color: var(--gray-600); font-size: 12px;">197101,
+                        Санкт-Петербург,<br>ул. Большая Монетная, д. 16</p>
+                </div>
+                <div class="footer-socials">
+                    <a href="#" class="social-icon">TG</a>
+                    <a href="#" class="social-icon">VK</a>
+                </div>
+            </div>
+
+            <!-- Col 2: Company -->
+            <div class="footer-col">
+                <h4>Компания</h4>
+                <ul>
+                    <li><a href="#">О компании</a></li>
+                    <li><a href="#">Схема работы</a></li>
+                    <li><a href="#">Вакансии</a></li>
+                    <li><a href="#">Производители</a></li>
+                </ul>
+                <h4 style="margin-top: 20px;">Услуги</h4>
+                <ul>
+                    <li><a href="#">Контрактное производство</a></li>
+                    <li><a href="#">Монтаж печатных плат</a></li>
+                    <li><a href="#">Печатные платы</a></li>
+                    <li><a href="#">Материалы для плат</a></li>
+                    <li><a href="#">Проверенная китайская ЭКБ</a></li>
+                    <li><a href="#">Подбор замен и аналогов</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Information -->
+            <div class="footer-col">
+                <h4>Информация</h4>
+                <ul>
+                    <li><a href="#">Новости</a></li>
+                    <li><a href="#">Статьи</a></li>
+                    <li><a href="#">Вопрос-ответ</a></li>
+                    <li><a href="#">База знаний</a></li>
+                </ul>
+                <h4 style="margin-top: 20px;"><a href="#" style="color: inherit; text-decoration: none;">Контакты</a>
+                </h4>
+            </div>
+
+            <!-- Col 4: Catalog -->
+            <div class="footer-col">
+                <h4>Каталог</h4>
+                <ul>
+                    <li><a href="#">Источники электропитания</a></li>
+                    <li><a href="#">Встраиваемые системы</a></li>
+                    <li><a href="#">ВЧ и СВЧ компоненты</a></li>
+                    <li><a href="#">Активные компоненты</a></li>
+                    <li><a href="#">Пассивные компоненты</a></li>
+                    <li><a href="#">Системы отображения</a></li>
+                    <li><a href="#">Кабельная продукция</a></li>
+                    <li><a href="#">Компоненты на складе</a></li>
+                    <li><a href="#">СВЧ</a></li>
+                    <li><a href="#">БПЛА и компоненты</a></li>
+                    <li><a href="#">Автомобильные запчасти</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 5: Feedback & Legal -->
+            <div class="footer-col" style="text-align: right;">
+                <div class="footer-btn-wrap">
+                    <button class="btn btn-primary" style="padding: 12px 24px; font-size: 13px;">Обратная связь</button>
+                </div>
+                <div class="footer-legal-links">
+                    <a href="#">Правила использования сайта</a>
+                    <a href="#">Политика обработки данных</a>
+                </div>
+            </div>
+        </div>
+        <div class="wide-container">
+            <div class="footer-bottom">
+                <p class="footer-disclaimer">Информация, размещенная на сайте, не является публичной офертой.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Particles Background Script -->
+    <script type="module" src="js/particles-background.js"></script>
+
+    <!-- Common Landing Logic (Slider & Animations) -->
+    <script>
+        // Слайдер
+        const track = document.getElementById('track');
+        const dotsContainer = document.getElementById('dots');
+        const dots = Array.from(dotsContainer.children);
+        const prev = document.getElementById('prev');
+        const next = document.getElementById('next');
+
+        let currentIdx = 0;
+        const slidesCount = 3;
+        let autoTimer;
+
+        function move(idx) {
+            currentIdx = (idx + slidesCount) % slidesCount;
+            track.style.transform = `translateX(-${currentIdx * 100}%)`;
+            dots.forEach(d => d.classList.remove('active'));
+            dots[currentIdx].classList.add('active');
+        }
+
+        function startTimer() {
+            autoTimer = setInterval(() => move(currentIdx + 1), 5000);
+        }
+
+        function resetTimer() {
+            clearInterval(autoTimer);
+            startTimer();
+        }
+
+        next.addEventListener('click', () => { move(currentIdx + 1); resetTimer(); });
+        prev.addEventListener('click', () => { move(currentIdx - 1); resetTimer(); });
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => { move(i); resetTimer(); });
+        });
+
+        const hero = document.getElementById('hero');
+        hero.addEventListener('mouseenter', () => clearInterval(autoTimer));
+        hero.addEventListener('mouseleave', startTimer);
+
+        startTimer();
+
+        // Анимации проявления
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+
+</html>
