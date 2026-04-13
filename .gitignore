@@ -1,0 +1,5 @@
+assets/images/*
+!assets/images/SVG_logo/
+.DS_Store
+node_modules/
+dist/
