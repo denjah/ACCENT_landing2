@@ -1,0 +1,12 @@
+{
+    "name": "accent-landing-v2",
+    "version": "1.0.0",
+    "description": "Accent Landing Page v2 - Engineering Version",
+    "main": "index.html",
+    "scripts": {
+        "dev": "browser-sync start --server --files \"index.html, css/*.css, js/*.js\""
+    },
+    "devDependencies": {
+        "browser-sync": "^3.0.3"
+    }
+}
