@@ -1,0 +1,708 @@
+/* =========================================
+   PRESENTATION — Акцент v2.1 (СВЕТЛАЯ ВЕРСИЯ)
+   Зависит от ../css/tokens.css
+   ========================================= */
+
+/* --- BASE RESET (портируем из main.css) --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: var(--font-sans);
+    font-size: var(--text-body-base);
+    color: var(--color-text-main);
+    background: var(--gray-50);
+    /* ← СВЕТЛЫЙ ФОН ВСЁЙ СТРАНИЦЫ */
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--color-text-heading);
+    font-weight: 700;
+    margin-bottom: var(--space-4);
+    letter-spacing: -0.02em;
+}
+
+p {
+    margin-bottom: var(--space-4);
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* --- HEADER (порт из main.css) --- */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--gray-900);
+    /* шапка остаётся тёмной — контраст */
+    border-bottom: 2px solid var(--color-primary-base);
+    height: 64px;
+    display: flex;
+    align-items: center;
+}
+
+.header .wide-container {
+    width: 100%;
+    padding: 0 var(--container-padding);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 100%;
+    width: auto;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+}
+
+.header-contacts {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+}
+
+.header-contacts a {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--gray-400);
+    transition: color 0.2s;
+}
+
+.header-contacts a:hover {
+    color: var(--white);
+}
+
+/* Кнопка «Вернуться» */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 24px;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 12px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--gray-600);
+    color: var(--gray-400);
+}
+
+.btn-outline:hover {
+    border-color: var(--color-primary-base);
+    color: var(--white);
+}
+
+.btn-primary {
+    background: var(--color-primary-base);
+    color: var(--color-text-inverse);
+}
+
+.btn-primary:hover {
+    background: var(--color-primary-hover);
+}
+
+/* --- SIDEBAR NAVIGATION --- */
+.pres-sidebar {
+    position: fixed;
+    left: 0;
+    top: 64px;
+    width: 260px;
+    height: calc(100vh - 64px);
+    background: transparent;
+    /* ← ПРОЗРАЧНЫЙ ФОН */
+    border-right: 1px solid rgba(196, 30, 58, 0.12);
+    z-index: 900;
+    overflow-y: auto;
+    padding: var(--space-4) 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gray-400) transparent;
+}
+
+.pres-sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.pres-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.pres-sidebar::-webkit-scrollbar-thumb {
+    background: var(--gray-400);
+    border-radius: 2px;
+}
+
+.pres-nav {
+    list-style: none;
+}
+
+.pres-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border-left: 3px solid transparent;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.85);
+    /* лёгкая подложка для читаемости */
+}
+
+.pres-nav-item:hover,
+.pres-nav-item.active {
+    background: rgba(255, 255, 255, 0.95);
+    border-left-color: var(--color-primary-base);
+}
+
+.nav-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-primary-base);
+    border: 1px solid var(--color-primary-base);
+    border-radius: 2px;
+    width: 28px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+}
+
+.pres-nav-item.active .nav-num {
+    background: var(--color-primary-base);
+    color: var(--white);
+}
+
+.nav-label {
+    font-size: 12px;
+    color: var(--gray-600);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: color 0.25s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pres-nav-item.active .nav-label {
+    color: var(--gray-900);
+    font-weight: 600;
+}
+
+.pres-nav-item:hover .nav-label {
+    color: var(--gray-800);
+}
+
+/* --- MAIN SCROLL CONTAINER --- */
+.pres-main {
+    margin-left: 260px;
+    margin-top: 64px;
+    height: calc(100vh - 64px);
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    background: var(--gray-50);
+}
+
+/* --- SECTION (полноэкранная) --- */
+.pres-section {
+    height: calc(100vh - 64px);
+    scroll-snap-align: start;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    gap: 0;
+    align-items: stretch;
+    position: relative;
+    border-bottom: 1px solid rgba(196, 30, 58, 0.08);
+    /* Светлая граница */
+}
+
+/* Левая колонка — контент */
+.pres-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-8) var(--space-10) var(--space-8) var(--space-8);
+    background: var(--white);
+    /* ← СВЕТЛЫЙ ФОН КОНТЕНТА */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Номер секции в углу */
+.pres-slide-num {
+    position: absolute;
+    top: var(--space-6);
+    left: var(--space-8);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-primary-base);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pres-slide-num::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--color-primary-base);
+}
+
+/* Section Tag — порт из main.css */
+.section-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-primary-base);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.section-tag::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--color-primary-base);
+}
+
+.pres-content h2 {
+    font-size: var(--text-h2);
+    line-height: 1.15;
+    color: var(--gray-900);
+    margin-bottom: var(--space-4);
+    max-width: 640px;
+}
+
+.pres-content h2 em {
+    color: var(--brand-red-500);
+    font-style: normal;
+}
+
+.pres-content p {
+    font-size: var(--text-body-lg);
+    color: var(--gray-800);
+    line-height: 1.7;
+    max-width: 580px;
+}
+
+.pres-content .lead {
+    font-size: 20px;
+    color: var(--gray-900);
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: var(--space-6);
+}
+
+/* Списки в контенте */
+.pres-list {
+    list-style: none;
+    margin: var(--space-4) 0;
+}
+
+.pres-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+    font-size: 15px;
+    color: var(--gray-800);
+    line-height: 1.5;
+}
+
+.pres-list li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--color-primary-base);
+    border-radius: 1px;
+    flex-shrink: 0;
+    margin-top: 7px;
+}
+
+/* Цифры/статистика внутри секций */
+.pres-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--space-6);
+    margin: var(--space-6) 0;
+}
+
+.pres-stat-val {
+    font-family: var(--font-mono);
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--gray-900);
+    line-height: 1;
+}
+
+.pres-stat-val span {
+    color: var(--color-primary-base);
+}
+
+.pres-stat-label {
+    font-size: 12px;
+    color: var(--gray-600);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 8px;
+}
+
+/* Карточки внутри секций */
+.pres-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: var(--space-4) 0;
+}
+
+.pres-card {
+    border: 1px solid var(--gray-200);
+    padding: var(--space-4);
+    border-radius: var(--radius-sm);
+    transition: border-color 0.3s;
+}
+
+.pres-card:hover {
+    border-color: var(--color-primary-base);
+}
+
+.pres-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--gray-900);
+}
+
+.pres-card p {
+    font-size: 13px;
+    color: var(--gray-600);
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+/* Шаги процесса */
+.pres-steps {
+    display: flex;
+    gap: 24px;
+    margin: var(--space-4) 0;
+    counter-reset: step;
+}
+
+.pres-step {
+    flex: 1;
+    counter-increment: step;
+    padding-top: 40px;
+    position: relative;
+}
+
+.pres-step::before {
+    content: counter(step, decimal-leading-zero);
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: var(--font-mono);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-primary-base);
+}
+
+.pres-step h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 6px;
+}
+
+.pres-step p {
+    font-size: 13px;
+    color: var(--gray-600);
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+/* Тёмные секции (инверсия ОТКЛЮЧЕНА, заменяем на чуть другой светлый фон) */
+.pres-section--dark .pres-content {
+    background: var(--gray-50);
+}
+
+.pres-section--dark .pres-content h2,
+.pres-section--dark .pres-content .lead {
+    color: var(--gray-900);
+}
+
+.pres-section--dark .pres-content p,
+.pres-section--dark .pres-content .pres-stat-label,
+.pres-section--dark .pres-list li,
+.pres-section--dark .pres-card p,
+.pres-section--dark .pres-step p {
+    color: var(--gray-800);
+}
+
+.pres-section--dark .pres-content h2 em,
+.pres-section--dark .pres-slide-num,
+.pres-section--dark .pres-step::before {
+    color: var(--brand-red-500);
+}
+
+.pres-section--dark .pres-stat-val,
+.pres-section--dark .pres-card h4,
+.pres-section--dark .pres-step h4 {
+    color: var(--gray-900);
+}
+
+.pres-section--dark .pres-card {
+    border-color: var(--gray-200);
+    background: var(--white);
+}
+
+.pres-section--dark .pres-card:hover {
+    border-color: var(--color-primary-base);
+}
+
+/* --- ПРАВАЯ КОЛОНКА — ВИЗУАЛ (СВЕТЛЫЙ placeholder) --- */
+.pres-visual {
+    background: linear-gradient(160deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Тёмный (теперь красный) слабый overlay поверх визуала */
+.pres-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(196, 30, 58, 0.03) 0%, rgba(196, 30, 58, 0.08) 100%);
+    z-index: 1;
+}
+
+/* Диагональные «трассировки» — CSS-only декор */
+.pres-visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(45deg,
+            transparent 48%,
+            rgba(196, 30, 58, 0.04) 49%,
+            rgba(196, 30, 58, 0.04) 51%,
+            transparent 52%),
+        linear-gradient(-30deg,
+            transparent 46%,
+            rgba(134, 142, 150, 0.04) 47%,
+            rgba(134, 142, 150, 0.04) 53%,
+            transparent 54%);
+    background-size: 80px 80px, 120px 120px;
+    z-index: 2;
+}
+
+/* Номер секции внутри визуала (крупный) */
+.pres-visual-num {
+    position: absolute;
+    bottom: var(--space-6);
+    right: var(--space-6);
+    font-family: var(--font-mono);
+    font-size: 72px;
+    font-weight: 700;
+    color: rgba(196, 30, 58, 0.1);
+    line-height: 1;
+    z-index: 3;
+}
+
+/* Вариации визуалов — чтобы не все были одинаковые (СВЕТЛЫЕ) */
+.pres-visual--alt1 {
+    background:
+        repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(134, 142, 150, 0.05) 59px, rgba(134, 142, 150, 0.05) 60px),
+        repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(134, 142, 150, 0.05) 59px, rgba(134, 142, 150, 0.05) 60px),
+        linear-gradient(135deg, #ffffff 0%, #e9ecef 50%, #f8f9fa 100%);
+    background-size: 60px 60px, 60px 60px, 100% 100%;
+}
+
+.pres-visual--alt2 {
+    background:
+        repeating-linear-gradient(45deg, transparent, transparent 19px, rgba(196, 30, 58, 0.03) 19px, rgba(196, 30, 58, 0.03) 20px),
+        linear-gradient(180deg, #f1f3f5 0%, #e9ecef 100%);
+    background-size: 20px 20px, 100% 100%;
+}
+
+.pres-visual--alt3 {
+    background:
+        radial-gradient(circle at 70% 30%, rgba(196, 30, 58, 0.05) 0%, transparent 50%),
+        repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(206, 212, 218, 0.2) 29px, rgba(206, 212, 218, 0.2) 30px),
+        repeating-linear-gradient(90deg, transparent, transparent 29px, rgba(206, 212, 218, 0.2) 29px, rgba(206, 212, 218, 0.2) 30px),
+        linear-gradient(200deg, #f8f9fa 0%, #e9ecef 100%);
+    background-size: 100% 100%, 30px 30px, 30px 30px, 100% 100%;
+}
+
+/* --- FADE-IN ANIMATIONS --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.fade-in.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger children */
+.pres-content>*:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.pres-content>*:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+.pres-content>*:nth-child(3) {
+    transition-delay: 0.25s;
+}
+
+.pres-content>*:nth-child(4) {
+    transition-delay: 0.35s;
+}
+
+.pres-content>*:nth-child(5) {
+    transition-delay: 0.45s;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1200px) {
+    .pres-sidebar {
+        width: 200px;
+    }
+
+    .pres-main {
+        margin-left: 200px;
+    }
+
+    .nav-label {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .pres-sidebar {
+        display: none;
+    }
+
+    .pres-main {
+        margin-left: 0;
+    }
+
+    .pres-section {
+        grid-template-columns: 1fr;
+    }
+
+    .pres-visual {
+        position: absolute;
+        inset: 0;
+        opacity: 0.12;
+        z-index: 0;
+    }
+
+    .pres-content {
+        position: relative;
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.97);
+    }
+
+    .pres-section--dark .pres-content {
+        background: rgba(248, 249, 250, 0.97);
+    }
+}
+
+@media (max-width: 768px) {
+    .header-contacts {
+        display: none;
+    }
+
+    .pres-content {
+        padding: var(--space-6) var(--space-4);
+    }
+
+    .pres-content h2 {
+        font-size: clamp(22px, 5vw, 32px);
+    }
+
+    .pres-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-4);
+    }
+
+    .pres-stat-val {
+        font-size: 36px;
+    }
+
+    .pres-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .pres-steps {
+        flex-direction: column;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pres-content h2 {
+        font-size: 22px;
+    }
+
+    .pres-content p {
+        font-size: 15px;
+    }
+
+    .pres-slide-num {
+        font-size: 10px;
+        top: var(--space-4);
+        left: var(--space-4);
+    }
+}
