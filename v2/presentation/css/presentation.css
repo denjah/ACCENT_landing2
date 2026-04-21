@@ -706,3 +706,38 @@ a {
         left: var(--space-4);
     }
 }
+
+/* --- MASCOTS --- */
+.pres-mascot-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 70%;
+    height: 33vh;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.pres-mascot-wrapper .pres-mascot {
+    height: 100%;
+    width: auto;
+    display: block;
+    transform: translateX(-35%);
+}
+
+@media (max-width: 1024px) {
+    .pres-mascot-wrapper {
+        left: auto;
+        right: var(--space-4);
+        height: 25vh;
+        opacity: 0.6;
+    }
+    .pres-mascot-wrapper .pres-mascot {
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .pres-mascot-wrapper {
+        display: none;
+    }
+}

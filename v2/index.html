@@ -40,6 +40,7 @@
                 <a href="tel:+79643944133">+7 964 394 41 33</a>
                 <a href="mailto:info@accentcomponent.ru">info@accentcomponent.ru</a>
                 <button class="btn btn-primary" style="padding: 8px 20px; font-size: 12px;">Загрузить BOM</button>
+                <a href="presentation/index.html" class="btn btn-white" style="padding: 8px 20px; font-size: 12px; text-decoration: none;">ПРЕЗЕНТАЦИЯ</a>
             </div>
         </div>
     </header>
@@ -248,7 +249,8 @@
                 <div class="exp-card">
                     <span class="exp-num">SEC 01</span>
                     <h3>Понимание требований к надежности</h3>
-                    <p>Квалифицированные специалисты с 10+ лет опытом работы с оборонной промышленностью и критически важными проектами</p>
+                    <p>Квалифицированные специалисты с 10+ лет опытом работы с оборонной промышленностью и критически
+                        важными проектами</p>
                 </div>
                 <div class="exp-card">
                     <span class="exp-num">SEC 02</span>
@@ -258,7 +260,8 @@
                 <div class="exp-card">
                     <span class="exp-num">SEC 03</span>
                     <h3>OEM, EOL, санкционная продукция</h3>
-                    <p>Работаем с ограниченными и сложными компонентами, знаем альтернативные каналы поставок и логистические решения</p>
+                    <p>Работаем с ограниченными и сложными компонентами, знаем альтернативные каналы поставок и
+                        логистические решения</p>
                 </div>
             </div>
         </div>
@@ -417,7 +420,8 @@
             <!-- Col 1: Logo & Slogan -->
             <div class="footer-col">
                 <div class="logo" style="margin-bottom: 12px; height: 110px;">
-                    <img src="assets/images/SVG_logo/ACCENT_LOGO_Горизонтальный+слоган.svg" alt="АКЦЕНТ — КОМПОНЕНТ ВАШЕГО УСПЕХА">
+                    <img src="assets/images/SVG_logo/ACCENT_LOGO_Горизонтальный+слоган.svg"
+                        alt="АКЦЕНТ — КОМПОНЕНТ ВАШЕГО УСПЕХА">
                 </div>
             </div>
 
@@ -436,7 +440,8 @@
             <div class="footer-col">
                 <h4>Контакты</h4>
                 <div class="footer-contact-info">
-                    <p><strong><a href="tel:+79643944133" style="font-size: 18px; color: var(--gray-900);">+7 964 394 41 33</a></strong></p>
+                    <p><strong><a href="tel:+79643944133" style="font-size: 18px; color: var(--gray-900);">+7 964 394 41
+                                33</a></strong></p>
                     <p><a href="mailto:info@accentcomponent.ru">info@accentcomponent.ru</a></p>
                     <p style="margin-top: 15px; color: var(--gray-600); font-size: 13px; line-height: 1.5;">
                         197110, Санкт-Петербург,<br>
@@ -447,7 +452,8 @@
         </div>
         <div class="wide-container">
             <div class="footer-bottom">
-                <p class="footer-disclaimer">Информация, размещенная на сайте, не является публичной офертой. © 2026 Акцент</p>
+                <p class="footer-disclaimer">Информация, размещенная на сайте, не является публичной офертой. © 2026
+                    Акцент</p>
             </div>
         </div>
     </footer>
@@ -485,7 +491,8 @@
                 ],
                 cta: "Загрузить спецификацию",
                 mascot: "assets/images/mascot/mascot_accent_06_sm.png",
-                flip: true
+                flip: true,
+                hasTicker: true
             },
             {
                 tag: "Для БПЛА",
@@ -529,7 +536,7 @@
 
         function updateHero(idx, direction = 'next') {
             if (cycleTimer) clearTimeout(cycleTimer);
-            
+
             // Fade out current content
             const currentContent = contentRoot.querySelector('.hero-offer-content');
             if (currentContent) {
@@ -538,17 +545,51 @@
 
             setTimeout(() => {
                 currentOfferIdx = (idx + HERO_OFFERS.length) % HERO_OFFERS.length;
-                
+
                 // Update dots
                 dots.forEach((d, i) => d.classList.toggle('active', i === currentOfferIdx));
-                
+
                 // Render new content
                 const offer = HERO_OFFERS[currentOfferIdx];
+                
+                let tickerHTML = '';
+                if (offer.hasTicker) {
+                    tickerHTML = `
+                    <div class="hero-ticker-wrap">
+                        <div class="hero-ticker-track">
+                            <img src="../brands/logo_harwin.svg" alt="harwin">
+                            <img src="../brands/logo_AMPHENOl.svg" alt="AMPHENOl">
+                            <img src="../brands/logo_samtec.svg" alt="samtec">
+                            <img src="../brands/logo_yazaki.svg" alt="yazaki">
+                            <img src="../brands/logo_molex.svg" alt="molex">
+                            <img src="../brands/logo_hrs.svg" alt="hrs">
+                            <img src="../brands/logo_itt.svg" alt="itt">
+                            <img src="../brands/logo_jst.svg" alt="jst">
+                            <img src="../brands/logo_wurth.svg" alt="wurth">
+                            <img src="../brands/logo_delphi.svg" alt="delphi">
+                            <img src="../brands/logo_jae.svg" alt="jae">
+                            <!-- Duplicate for infinite scroll -->
+                            <img src="../brands/logo_harwin.svg" alt="harwin">
+                            <img src="../brands/logo_AMPHENOl.svg" alt="AMPHENOl">
+                            <img src="../brands/logo_samtec.svg" alt="samtec">
+                            <img src="../brands/logo_yazaki.svg" alt="yazaki">
+                            <img src="../brands/logo_molex.svg" alt="molex">
+                            <img src="../brands/logo_hrs.svg" alt="hrs">
+                            <img src="../brands/logo_itt.svg" alt="itt">
+                            <img src="../brands/logo_jst.svg" alt="jst">
+                            <img src="../brands/logo_wurth.svg" alt="wurth">
+                            <img src="../brands/logo_delphi.svg" alt="delphi">
+                            <img src="../brands/logo_jae.svg" alt="jae">
+                        </div>
+                    </div>`;
+                }
+
                 contentRoot.innerHTML = `
                     <div class="hero-offer-content">
                         <div class="section-tag">${offer.tag}</div>
                         <h1>${offer.h1}</h1>
                         <p class="slide-sub">${offer.sub}</p>
+                        ${tickerHTML}
                         <ul class="slide-list">
                             ${offer.list.map(item => `<li>${item}</li>`).join('')}
                         </ul>
@@ -563,7 +604,7 @@
                 currentVideoIdx = (currentVideoIdx + 1) % HERO_VIDEOS.length;
                 videoEl.src = HERO_VIDEOS[currentVideoIdx];
                 videoEl.load();
-                videoEl.play().catch(() => {});
+                videoEl.play().catch(() => { });
 
                 if (!isPaused) startTimer();
             }, currentContent ? 800 : 0); // Match exit animation time
