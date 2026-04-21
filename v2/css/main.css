@@ -229,6 +229,7 @@ section {
 .hero-offer-content {
     max-width: 900px;
     color: var(--gray-900);
+    padding-bottom: 80px;
 }
 
 .hero-offer-content .section-tag {
