@@ -1,0 +1,96 @@
+Активные компоненты
+Микроконтроллеры / Микропроцессоры
+Ambiq, Epson, Infineon, MaxLinear, Microchip, NXP, Nexperia, QuickLogic,  Renesas, ROHM, STMicroelectronics, WIZnet, Zilog
+(01_MICRO)
+
+Память
+ADATA, Alliance Memory, Centon, Everspin Technologies, GigaDevice, Greenliant, Infineon, Kingston, Macronix, MaxLinear, Microchip, NXP, ONsemi, Pansonic, Renesas, ROHM, SkyHigh Memory, STMicroelectronics, TDK, Unigen
+(03_PANATJ)
+
+Интерфейсы
+Diodes Incorporated, FTDI Chip, IK Semicon, Infineon, Littelfuse, MaxLinear, Microchip, Monolithic Power Systems, Nexperia, NXP, ONsemi, Pericom Saronix-eCera, Renesas, Richtek, ROHM, ScioSense, Semtech, Siergy, STMicroelectronics, TE Connectivity
+(02_INTERF)
+
+Дискретные компоненты
+Calogic, CEL, Central Semiconductor, Diodes Incorporated, Eaton, Infineon, Isocom Components, KYOCERA AVX, Littelfuse, IXYS, Micro Commercial Components, Microchip, Murata Power Solution, Nexperia, NIC Components, NXP, ONsemi, Panasonic, Power Integrations, ProTek Devices, Pulse Electronics, Renesas, ROHM, Schurter, SMC, Stackpole Electronics, Surge, Taiwan Semiconductor, TDK, Epcos, Optek Technology, Vishay, Yageo
+(05_DISCRET)
+
+Логика
+Abracon, Alliance Memory, Altech Corporation, Diodes Incorporated, Efinix, IK Semicon, Infineon, Littelfuse, Microchip, Nexperia, NXP, Nisshinbo Micro Devices, NXP, ONsemi, Pericom Saronix-eCera, Renesas, ROHM, Socle, STMicroelectronics, Vishay
+(04_LOGIC)
+
+Обработка сигнала
+Amphenol Communications Solutions, ASSMANN WSW Components, Diodes Incorporated, FTDI Chip, IK Semicon, Infineon, Littelfuse, MaxLinear, Microchip, Monolithic Power Systems, Nexperia, NXP, ONsemi, Opto 22, Pericom Saronix-eCera, Renesas, Richtek, ROHM, ScioSense, Semtech, Semtech, Silergy, STMicroelectronics, TE Connectivity
+(06_OBRABOTKSIGN)
+
+Кварцы
+JSCJ, QST, SJK, TDK, WTL, SUNCO, YXC
+(07_KVARC)
+
+
+Датчики
+Abracon, Acconeer, Allegro MicroSystems, Amphenol Advanced Sensors, AMS OSRAM, C&K, Chippack, Diodes Incorporated, Everlight, Infineon, Inolux, LITEON, Melexis, Microchip, MikroElektronika, Monolithic Power Systems, Murta, NXP, ONsemi, Panasonic, Pulse Electronics, Renesas, ROHM, Same Sky – CUI Devices, ScioSense, Sensirion, Silergy, STMicroelectronics, TE Connectivity
+(08_DATCHIC)
+
+СВЧ
+Abracone, Adam Tech, Advantech, Ambiq, CEL, Infineon, Inventek Systems, IOSEA, KYOCERA AVX, MaxLinear, Microchip, MikroElektronika, MultiTech, Murata, Nexperia, NIC Components, Nisshinbo Micro Devices, NXP, ONsemi, Panasonic, Pulse Electronics, Renesas, ROHM, Semtech, Sierra Wireless, Silex Technology, SMARTRAC, STMicroelectronics, Sumida, Susumu, Synapse Wireless, TAIYO YUDEN, Taoglas, TDK, TE Connectivity, Telit Cinterion, Toradex, U-blox, Vishay, WIZnet, YAGEO
+(09_SVCH)
+
+Транзисторы
+Diodes Incorporated, Infineon, ONsemi, STMicroelectronics, Micro Commercial Components, Nexperia, Infineon, Panasonic, Vishay
+(10_TRANZISTOR)
+
+Драйвера IGBT
+Diodes Incorporated, ONsemi, STMicroelectronics, Littelfuse, Infineon, Panasonic, Vishay
+(11_DRIVERS)
+
+
+Пассивные компоненты
+Конденсаторы
+Faithful Link, Abracone, Eaton, Kemet, KYOCERA AVX, Murata, NIC Components, Nichicon, Panasonic, Pulse Electronics, Rubycon, Samwha, Surge, TAIYO YUDEN, TDK, TDK EPCOS, Viking, Vishay, Walsin Technology Corporation, WIMA, YAGEO
+(12_KONDENSATOR)
+
+Соединители
+logo_delphi.svg, logo_harwin.svg, logo_hrs.svg, logo_itt.svg, logo_jae.svg, logo_jst.svg, logo_molex.svg, logo_samtec.svg, logo_wurth.svg, logo_yazaki.svg. 
+(12+_SOEDINITEL)
+Резисторы
+Faithful Link, Abracone, CTS, EATON, Hirose Electronic, Infineon, Keystone, KYOCERA AVX, Murata, Nexperia, NIC Componets, NXP, Ohmite, Panasonic, Piher, Pulse Electronics, Renesas, ROHM, SCHURTER, Sumida, Susumu, TAIYO YUDEN, TDK, TE Connectivity, Viking, Vishay, Walsin Technology Corporation, YAGEO
+(14_RESIST)
+
+Индуктивность
+Faithful Link, Abracone, EATON, HALO Electronics, KYOCERA AVX, Littelfuse, Murata, NIC Components, Panasonic, Pulse Electronics, RECOM, Sumida, TAIYO YUDEN, TDK, EPCOS, Viking, Vishay
+(13_INDUCT)
+
+
+Силовая электроника
+
+Источники питания
+CUI Inc, Chinfa Electronics, Cincon, INVENTRONICS, Mornsun, Mean Well, RECOM, Traco Power
+(15_PITANIE)
+
+LED-драйверы
+INVENTRONICS, Eaglerise,  Mornsun, MOSO, Mean Well, Lumileds, MOONS, RECOM
+(16_LED)
+
+Трансформаторы
+EATON, Halo Electronics, Murata Power Solutions, Pulse Electronics, Sumida, TDK, Triad Magnetics, Zettler Magnetics
+(17_TRANSFORM)
+
+
+Электромеханика
+Разъемы
+Exceedconn, KLS, Connfly, Amphenol, ASSMANN WSW Componets, Bivar, Bomar, HALO Electronics, HARTING, Heyco, Hirose Electric, JST, TE Connectivity, Sullins
+(18_RAZJEM)
+Реле
+Hongfa, WQE, Finder, Song Chuan, Forward Relays, Ixys, Rerlpol, Shrack, Tai Shing, Tianbo, 
+(19_RELE)
+
+
+Оптоэлектроника
+Дисплеи
+Advantech, AZ Displays, Lumex, Winstar Display
+(20_DISPLAY)
+
+Светодиоды
+Foryard, Bridgelux, Cree, G-nor,  Everlight, OSRAM, Kingbright, Lumileds, Samsung LED, Seoul Semiconductor, Nichia, Lite-ON, Paralight, Refond
+(21_DIODES)

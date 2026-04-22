@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АКЦЕНТ — Полный список производителей микроэлектроники | Linecard</title>
+    <meta name="description" content="70+ брендов электронных компонентов: активные, пассивные, соединители, силовая электроника и др.">
+
+    <!-- Шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Reuse design system -->
+    <link rel="stylesheet" href="../css/tokens.css">
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        /* =========================================
+           LINECARD-SPECIFIC STYLES
+           ========================================= */
+
+        /* Hero */
+        .lc-hero {
+            margin-top: 64px;
+            position: relative;
+            min-height: calc(100vh - 64px);
+            background: var(--gray-900);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .lc-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.03) 39px, rgba(255,255,255,0.03) 40px),
+                repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.03) 39px, rgba(255,255,255,0.03) 40px);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* PCB trace decorations */
+        .lc-hero::after {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: -5%;
+            width: 60%;
+            height: 80%;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(196,30,58,0.06) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(196,30,58,0.04) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .lc-hero-inner {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-8);
+            align-items: center;
+            padding: var(--space-10) 0;
+        }
+
+        .lc-hero-text {
+            color: var(--white);
+        }
+
+        .lc-hero-text .section-tag {
+            color: var(--brand-red-500);
+        }
+
+        .lc-hero-text .section-tag::before {
+            background: var(--brand-red-500);
+        }
+
+        .lc-hero-text h1 {
+            font-size: var(--text-h1);
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: var(--space-4);
+        }
+
+        .lc-hero-sub {
+            font-size: var(--text-body-lg);
+            color: var(--gray-400);
+            margin-bottom: var(--space-8);
+            line-height: 1.6;
+        }
+
+        .lc-hero-mascot {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .lc-hero-mascot img {
+            max-height: 420px;
+            width: auto;
+            object-fit: contain;
+            opacity: 0;
+            transform: translateX(40px);
+            animation: mascot-entry 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.6s;
+        }
+
+        @media (max-width: 900px) {
+            .lc-hero-inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .lc-hero-mascot {
+                display: none;
+            }
+        }
+
+        /* PCB chip decorative elements */
+        .pcb-chip {
+            position: absolute;
+            border: 1px solid rgba(196,30,58,0.15);
+            border-radius: 2px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .pcb-chip-1 { width: 48px; height: 48px; top: 15%; right: 12%; }
+        .pcb-chip-2 { width: 32px; height: 64px; top: 60%; right: 25%; }
+        .pcb-chip-3 { width: 56px; height: 24px; bottom: 20%; left: 8%; }
+
+        .pcb-chip::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -20px;
+            width: 20px;
+            height: 1px;
+            background: rgba(196,30,58,0.12);
+        }
+
+        .pcb-chip::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            width: 1px;
+            height: 20px;
+            background: rgba(196,30,58,0.12);
+        }
+
+        /* Category sections */
+        .lc-category {
+            padding: var(--space-10) 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .lc-category:nth-child(even) {
+            background: var(--gray-50);
+        }
+
+        .lc-category-header {
+            margin-bottom: var(--space-8);
+        }
+
+        .lc-subcategory {
+            margin-bottom: var(--space-8);
+        }
+
+        .lc-subcategory:last-child {
+            margin-bottom: 0;
+        }
+
+        .lc-sub-title {
+            font-family: var(--font-mono);
+            font-size: var(--text-body-sm);
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: var(--space-4);
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lc-sub-title .lc-sub-code {
+            font-size: 11px;
+            background: var(--gray-200);
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            color: var(--gray-600);
+        }
+
+        /* Logo grid */
+        .lc-logo-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 16px;
+        }
+
+        @media (max-width: 1200px) {
+            .lc-logo-grid { grid-template-columns: repeat(5, 1fr); }
+        }
+
+        @media (max-width: 900px) {
+            .lc-logo-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 560px) {
+            .lc-logo-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .lc-logo-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 12px 12px;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            background: var(--white);
+            transition: all 0.3s ease;
+            min-height: 96px;
+        }
+
+        .lc-logo-card:hover {
+            border-color: var(--brand-red-500);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+
+        .lc-logo-card img {
+            height: 64px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        /* Smaller logo variant for SVG connector logos */
+        .lc-logo-grid--sm .lc-logo-card img {
+            height: 48px;
+        }
+
+        .lc-logo-card:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .lc-logo-name {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 8px;
+            text-align: center;
+            line-height: 1.3;
+            word-break: break-word;
+        }
+
+        /* Brand text list below grid */
+        .lc-brand-list {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--gray-600);
+            line-height: 2;
+            margin-top: 16px;
+            margin-bottom: 0;
+            letter-spacing: 0.02em;
+        }
+
+        /* Divider */
+        .lc-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gray-300) 20%, var(--gray-300) 80%, transparent);
+            margin: var(--space-6) 0 0;
+        }
+
+        /* Bottom CTA */
+        .lc-bottom-cta {
+            padding: var(--space-10) 0;
+            background: var(--gray-900);
+            text-align: center;
+            border-bottom: none;
+        }
+
+        .lc-bottom-cta h2 {
+            color: var(--white);
+            margin-bottom: var(--space-6);
+        }
+
+        .lc-bottom-cta .lc-cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Stats mini bar */
+        .lc-stats {
+            display: flex;
+            gap: var(--space-8);
+            margin-top: var(--space-6);
+        }
+
+        .lc-stat {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .lc-stat-num {
+            font-family: var(--font-mono);
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--brand-red-500);
+            line-height: 1;
+        }
+
+        .lc-stat-label {
+            font-size: var(--text-body-sm);
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 560px) {
+            .lc-stats {
+                flex-direction: column;
+                gap: var(--space-4);
+                align-items: center;
+            }
+        }
+
+        /* Sticky nav for categories */
+        .lc-cat-nav {
+            position: sticky;
+            top: 64px;
+            z-index: 100;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 12px 0;
+            overflow-x: auto;
+        }
+
+        .lc-cat-nav-inner {
+            display: flex;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .lc-cat-nav a {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--gray-600);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 6px 14px;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .lc-cat-nav a:hover,
+        .lc-cat-nav a.active {
+            color: var(--brand-red-500);
+            border-color: var(--brand-red-500);
+            background: rgba(196,30,58,0.04);
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .lc-hero-mascot img {
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            .lc-logo-card,
+            .lc-logo-card img {
+                transition: none !important;
+            }
+            .fade-in {
+                transition: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER (identical to main landing) -->
+    <header class="header">
+        <div class="wide-container">
+            <div class="logo">
+                <img src="../assets/images/SVG_logo/ACCENT_LOGO_Горизонтальный_белый.svg" alt="АКЦЕНТ">
+            </div>
+            <div class="header-contacts">
+                <a href="tel:+79643944133">+7 964 394 41 33</a>
+                <a href="mailto:info@accentcomponent.ru">info@accentcomponent.ru</a>
+                <a href="../index.html" class="btn btn-white" style="padding: 8px 20px; font-size: 12px; text-decoration: none;">Вернуться на сайт</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="lc-hero" id="lc-hero">
+        <div class="pcb-chip pcb-chip-1"></div>
+        <div class="pcb-chip pcb-chip-2"></div>
+        <div class="pcb-chip pcb-chip-3"></div>
+        <div class="wide-container">
+            <div class="lc-hero-inner">
+                <div class="lc-hero-text">
+                    <div class="section-tag">Linecard</div>
+                    <h1>Полный список производителей</h1>
+                    <p class="lc-hero-sub">70+ мировых брендов электронных компонентов — от активных и пассивных до силовой электроники и оптоэлектроники</p>
+                    <a href="#" class="btn btn-primary" id="download-pdf-top">Скачать PDF-каталог</a>
+                    <div class="lc-stats">
+                        <div class="lc-stat">
+                            <span class="lc-stat-num">70+</span>
+                            <span class="lc-stat-label">Брендов</span>
+                        </div>
+                        <div class="lc-stat">
+                            <span class="lc-stat-num">5</span>
+                            <span class="lc-stat-label">Категорий</span>
+                        </div>
+                        <div class="lc-stat">
+                            <span class="lc-stat-num">21</span>
+                            <span class="lc-stat-label">Подкатегория</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lc-hero-mascot">
+                    <img src="../assets/images/mascot/mascot_accent_05_sm.png" alt="Маскот Chip">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Navigation -->
+    <nav class="lc-cat-nav" id="lc-nav">
+        <div class="wide-container">
+            <div class="lc-cat-nav-inner">
+                <a href="#cat-active">Активные</a>
+                <a href="#cat-passive">Пассивные</a>
+                <a href="#cat-power">Силовая электроника</a>
+                <a href="#cat-electromech">Электромеханика</a>
+                <a href="#cat-opto">Оптоэлектроника</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===================== АКТИВНЫЕ КОМПОНЕНТЫ ===================== -->
+    <div class="lc-category fade-in" id="cat-active">
+        <div class="wide-container">
+            <div class="lc-category-header">
+                <div class="section-tag">Активные компоненты</div>
+                <h2>Активные компоненты</h2>
+            </div>
+
+            <!-- 01_MICRO -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">01</span> Микроконтроллеры / Микропроцессоры</div>
+                <div class="lc-logo-grid" data-folder="01_MICRO" data-prefix="01_MICRO_" data-count="13" data-ext="png"
+                     data-names="Ambiq,Epson,Infineon,MaxLinear,Microchip,NXP,Nexperia,QuickLogic,Renesas,ROHM,STMicroelectronics,WIZnet,Zilog">
+                </div>
+            </div>
+
+            <!-- 03_PANATJ -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">02</span> Память</div>
+                <div class="lc-logo-grid" data-folder="03_PANATJ" data-prefix="PAMATJ_" data-count="20" data-ext="png"
+                     data-names="ADATA,Alliance Memory,Centon,Everspin,GigaDevice,Greenliant,Infineon,Kingston,Macronix,MaxLinear,Microchip,NXP,ONsemi,Panasonic,Renesas,ROHM,SkyHigh Memory,STMicroelectronics,TDK,Unigen">
+                </div>
+            </div>
+
+            <!-- 02_INTERF -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">03</span> Интерфейсы</div>
+                <div class="lc-logo-grid" data-folder="02_INTERF" data-prefix="03_ИНТЕРФЕЙСЫ_" data-count="19" data-ext="png"
+                     data-names="Diodes Inc.,FTDI Chip,IK Semicon,Infineon,Littelfuse,MaxLinear,Microchip,MPS,Nexperia,NXP,ONsemi,Pericom,Renesas,Richtek,ROHM,ScioSense,Semtech,Siergy,STMicroelectronics">
+                </div>
+            </div>
+
+            <!-- 05_DISCRET -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">04</span> Дискретные компоненты</div>
+                <div class="lc-logo-grid" data-folder="05_DISCRET" data-prefix="05_DISCRET_" data-start="34" data-count="31" data-ext="png"
+                     data-names="Calogic,CEL,Central Semi,Diodes Inc.,Eaton,Infineon,Isocom,KYOCERA AVX,Littelfuse,IXYS,MCC,Microchip,Murata PS,Nexperia,NIC,NXP,ONsemi,Panasonic,Power Integrations,ProTek,Pulse Elec.,Renesas,ROHM,Schurter,SMC,Stackpole,Surge,Taiwan Semi,TDK,Vishay,Yageo">
+                </div>
+            </div>
+
+            <!-- 04_LOGIC -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">05</span> Логика</div>
+                <div class="lc-logo-grid" data-folder="04_LOGIC" data-prefix="04_LOGIC_" data-start="15" data-count="19" data-ext="png"
+                     data-names="Abracon,Alliance Memory,Altech,Diodes Inc.,Efinix,IK Semicon,Infineon,Littelfuse,Microchip,Nexperia,NXP,Nisshinbo,NXP,ONsemi,Pericom,Renesas,ROHM,Socle,STMicroelectronics">
+                </div>
+            </div>
+
+            <!-- 06_OBRABOTKSIGN -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">06</span> Обработка сигнала</div>
+                <div class="lc-logo-grid" data-folder="06_OBRABOTKSIGN" data-prefix="06_OBRABOTKSIGN_" data-count="23" data-ext="png"
+                     data-names="Amphenol CS,ASSMANN,Diodes Inc.,FTDI Chip,IK Semicon,Infineon,Littelfuse,MaxLinear,Microchip,MPS,Nexperia,NXP,ONsemi,Opto 22,Pericom,Renesas,Richtek,ROHM,ScioSense,Semtech,Silergy,STMicroelectronics,TE Connectivity">
+                </div>
+            </div>
+
+            <!-- 07_KVARC -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">07</span> Кварцы</div>
+                <div class="lc-logo-grid" data-folder="07_KVARC" data-prefix="07_KVARC_" data-count="5" data-ext="png"
+                     data-names="JSCJ,QST,SJK,TDK,WTL">
+                </div>
+            </div>
+
+            <!-- 08_DATCHIC -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">08</span> Датчики</div>
+                <div class="lc-logo-grid" data-folder="08_DATCHIC" data-prefix="08_DATCHIC_" data-count="38" data-ext="png"
+                     data-names="Abracon,Acconeer,Allegro,Amphenol AS,AMS OSRAM,C&K,Chippack,Diodes Inc.,Everlight,Infineon,Inolux,LITEON,Melexis,Microchip,MikroElektronika,MPS,Murata,NXP,ONsemi,Panasonic,Pulse Elec.,Renesas,ROHM,Same Sky,ScioSense,Sensirion,Silergy,STMicroelectronics,TE Connectivity,,,,,,,,,">
+                </div>
+            </div>
+
+            <!-- 09_SVCH -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">09</span> СВЧ</div>
+                <div class="lc-logo-grid" data-folder="09_SVCH" data-prefix="09_SVCH_" data-count="22" data-ext="png"
+                     data-names="Abracon,Adam Tech,Advantech,Ambiq,CEL,Infineon,Inventek,IOSEA,KYOCERA AVX,MaxLinear,Microchip,MikroElektronika,MultiTech,Murata,Nexperia,NIC,Nisshinbo,NXP,ONsemi,Panasonic,Pulse Elec.,Renesas">
+                </div>
+            </div>
+
+            <!-- 10_TRANZISTOR -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">10</span> Транзисторы</div>
+                <div class="lc-logo-grid" data-folder="10_TRANZISTOR" data-prefix="10_TRANZISTOR_" data-count="8" data-ext="png"
+                     data-names="Diodes Inc.,Infineon,ONsemi,STMicroelectronics,MCC,Nexperia,Panasonic,Vishay">
+                </div>
+            </div>
+
+            <!-- 11_DRIVERS -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">11</span> Драйвера IGBT</div>
+                <div class="lc-logo-grid" data-folder="11_DRIVERS" data-prefix="11_DRIVERS_" data-count="7" data-ext="png"
+                     data-names="Diodes Inc.,ONsemi,STMicroelectronics,Littelfuse,Infineon,Panasonic,Vishay">
+                </div>
+            </div>
+
+            <div class="lc-divider"></div>
+        </div>
+    </div>
+
+    <!-- ===================== ПАССИВНЫЕ КОМПОНЕНТЫ ===================== -->
+    <div class="lc-category fade-in" id="cat-passive">
+        <div class="wide-container">
+            <div class="lc-category-header">
+                <div class="section-tag">Пассивные компоненты</div>
+                <h2>Пассивные компоненты</h2>
+            </div>
+
+            <!-- 12_KONDENSATOR -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">12</span> Конденсаторы</div>
+                <div class="lc-logo-grid" data-folder="12_KONDENSATOR" data-prefix="12_KONDENSATOR_" data-count="20" data-ext="png"
+                     data-names="Faithful Link,Abracon,Eaton,Kemet,KYOCERA AVX,Murata,NIC Components,Nichicon,Panasonic,Pulse Elec.,Rubycon,Samwha,Surge,TAIYO YUDEN,TDK,TDK EPCOS,Viking,Vishay,Walsin,WIMA">
+                </div>
+            </div>
+
+            <!-- 12+_SOEDINITEL -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">13</span> Соединители</div>
+                <div class="lc-logo-grid lc-logo-grid--sm" id="grid-soedinitel">
+                    <!-- SVG logos — populated via JS -->
+                </div>
+            </div>
+
+            <!-- 14_RESIST -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">14</span> Резисторы</div>
+                <div class="lc-logo-grid" data-folder="14_RESIST" data-prefix="14_RESIST_" data-count="23" data-ext="png"
+                     data-names="Faithful Link,Abracon,CTS,EATON,Hirose,Infineon,Keystone,KYOCERA AVX,Murata,Nexperia,NIC,NXP,Ohmite,Panasonic,Piher,Pulse Elec.,Renesas,ROHM,Schurter,Sumida,Susumu,TAIYO YUDEN,TDK">
+                </div>
+            </div>
+
+            <!-- 13_INDUCT -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">15</span> Индуктивность</div>
+                <div class="lc-logo-grid" data-folder="13_INDUCT" data-prefix="13_INDUCT_" data-count="16" data-ext="png"
+                     data-names="Faithful Link,Abracon,EATON,HALO Electronics,KYOCERA AVX,Littelfuse,Murata,NIC Components,Panasonic,Pulse Elec.,RECOM,Sumida,TAIYO YUDEN,TDK,EPCOS,Viking">
+                </div>
+            </div>
+
+            <div class="lc-divider"></div>
+        </div>
+    </div>
+
+    <!-- ===================== СИЛОВАЯ ЭЛЕКТРОНИКА ===================== -->
+    <div class="lc-category fade-in" id="cat-power">
+        <div class="wide-container">
+            <div class="lc-category-header">
+                <div class="section-tag">Силовая электроника</div>
+                <h2>Силовая электроника</h2>
+            </div>
+
+            <!-- 15_PITANIE -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">16</span> Источники питания</div>
+                <div class="lc-logo-grid" data-folder="15_PITANIE" data-prefix="15_PITANIE_" data-count="8" data-ext="png"
+                     data-names="CUI Inc,Chinfa,Cincon,INVENTRONICS,Mornsun,Mean Well,RECOM,Traco Power">
+                </div>
+            </div>
+
+            <!-- 16_LED -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">17</span> LED-драйверы</div>
+                <div class="lc-logo-grid" data-folder="16_LED" data-prefix="16_LED_" data-count="8" data-ext="png"
+                     data-names="INVENTRONICS,Eaglerise,Mornsun,MOSO,Mean Well,Lumileds,MOONS,RECOM">
+                </div>
+            </div>
+
+            <!-- 17_TRANSFORM -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">18</span> Трансформаторы</div>
+                <div class="lc-logo-grid" data-folder="17_TRANSFORM" data-prefix="17_TRANSFORM_" data-count="8" data-ext="png"
+                     data-names="EATON,HALO Electronics,Murata PS,Pulse Elec.,Sumida,TDK,Triad Magnetics,Zettler">
+                </div>
+            </div>
+
+            <div class="lc-divider"></div>
+        </div>
+    </div>
+
+    <!-- ===================== ЭЛЕКТРОМЕХАНИКА ===================== -->
+    <div class="lc-category fade-in" id="cat-electromech">
+        <div class="wide-container">
+            <div class="lc-category-header">
+                <div class="section-tag">Электромеханика</div>
+                <h2>Электромеханика</h2>
+            </div>
+
+            <!-- 18_RAZJEM -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">19</span> Разъемы</div>
+                <div class="lc-logo-grid" data-folder="18_RAZJEM" data-prefix="18_RAZJEM_" data-count="14" data-ext="png"
+                     data-names="Exceedconn,KLS,Connfly,Amphenol,ASSMANN,Bivar,Bomar,HALO Elec.,HARTING,Heyco,Hirose,JST,TE Connectivity,Sullins">
+                </div>
+            </div>
+
+            <!-- 19_RELE -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">20</span> Реле</div>
+                <div class="lc-logo-grid" data-folder="19_RELE" data-prefix="18_RAZJEM_" data-count="10" data-ext="png"
+                     data-names="Hongfa,WQE,Finder,Song Chuan,Forward Relays,Ixys,Rerlpol,Shrack,Tai Shing,Tianbo">
+                </div>
+            </div>
+
+            <div class="lc-divider"></div>
+        </div>
+    </div>
+
+    <!-- ===================== ОПТОЭЛЕКТРОНИКА ===================== -->
+    <div class="lc-category fade-in" id="cat-opto">
+        <div class="wide-container">
+            <div class="lc-category-header">
+                <div class="section-tag">Оптоэлектроника</div>
+                <h2>Оптоэлектроника</h2>
+            </div>
+
+            <!-- 20_DISPLAY -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">21</span> Дисплеи</div>
+                <div class="lc-logo-grid" data-folder="20_DISPLAY" data-prefix="20_DISPLAY_" data-count="4" data-ext="png"
+                     data-names="Advantech,AZ Displays,Lumex,Winstar Display">
+                </div>
+            </div>
+
+            <!-- 21_DIODES -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">22</span> Светодиоды</div>
+                <div class="lc-logo-grid" data-folder="21_DIODES" data-prefix="21_DIODES_" data-count="14" data-ext="png"
+                     data-names="Foryard,Bridgelux,Cree,G-nor,Everlight,OSRAM,Kingbright,Lumileds,Samsung LED,Seoul Semi,Nichia,Lite-ON,Paralight,Refond">
+                </div>
+            </div>
+
+            <div class="lc-divider"></div>
+        </div>
+    </div>
+
+    <!-- BOTTOM CTA -->
+    <section class="lc-bottom-cta">
+        <div class="wide-container">
+            <h2>Нужен компонент из нашего каталога?</h2>
+            <div class="lc-cta-buttons">
+                <a href="../index.html" class="btn btn-outline" style="color: var(--gray-400); border-color: var(--gray-600);">Вернуться на главный сайт</a>
+                <a href="#" class="btn btn-primary" id="download-pdf-bottom">Скачать полный PDF</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (identical to main landing) -->
+    <footer class="footer">
+        <div class="wide-container">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 12px; height: 110px;">
+                    <img src="../assets/images/SVG_logo/ACCENT_LOGO_Горизонтальный+слоган.svg"
+                        alt="АКЦЕНТ — КОМПОНЕНТ ВАШЕГО УСПЕХА">
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Навигация</h4>
+                <ul>
+                    <li><a href="../index.html#mission">О КОМПАНИИ</a></li>
+                    <li><a href="../index.html#advantages">НАШИ ПРЕИМУЩЕСТВА</a></li>
+                    <li><a href="../index.html#process">СХЕМА РАБОТЫ</a></li>
+                    <li><a href="../index.html#manufacturers">ПРОИЗВОДИТЕЛИ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <div class="footer-contact-info">
+                    <p><strong><a href="tel:+79643944133" style="font-size: 18px; color: var(--gray-900);">+7 964 394 41 33</a></strong></p>
+                    <p><a href="mailto:info@accentcomponent.ru">info@accentcomponent.ru</a></p>
+                    <p style="margin-top: 15px; color: var(--gray-600); font-size: 13px; line-height: 1.5;">
+                        197110, Санкт-Петербург,<br>
+                        ул. Ропшинская, д.30, литер А, кв.6
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="wide-container">
+            <div class="footer-bottom">
+                <p class="footer-disclaimer">Информация, размещенная на сайте, не является публичной офертой. © 2026 Акцент</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // =============================================
+        // Populate logo grids from data attributes
+        // =============================================
+        document.querySelectorAll('.lc-logo-grid[data-folder]').forEach(grid => {
+            const folder = grid.dataset.folder;
+            const prefix = grid.dataset.prefix;
+            const count = parseInt(grid.dataset.count, 10);
+            const ext = grid.dataset.ext || 'png';
+            const start = parseInt(grid.dataset.start || '1', 10);
+            const names = (grid.dataset.names || '').split(',').map(n => n.trim()).filter(Boolean);
+
+            // Render logo cards (without text names — file order ≠ brand order)
+            for (let i = 0; i < count; i++) {
+                const num = String(start + i).padStart(2, '0');
+                const filename = `${prefix}${num}.${ext}`;
+
+                const card = document.createElement('div');
+                card.className = 'lc-logo-card';
+                card.innerHTML = `
+                    <img src="../assets/linecard/${folder}/${filename}" 
+                         alt="Производитель" 
+                         loading="lazy" 
+                         width="120" height="64">
+                `;
+                grid.appendChild(card);
+            }
+
+            // Add brand name text list below grid for SEO & reference
+            if (names.length > 0) {
+                const brandList = document.createElement('p');
+                brandList.className = 'lc-brand-list';
+                brandList.textContent = names.join(' · ');
+                grid.parentNode.appendChild(brandList);
+            }
+        });
+
+        // Soediniteli — SVG logos with specific filenames
+        const soedinitelGrid = document.getElementById('grid-soedinitel');
+        const soedinitelLogos = [
+            { file: 'logo_delphi.svg', name: 'Delphi' },
+            { file: 'logo_harwin.svg', name: 'Harwin' },
+            { file: 'logo_hrs.svg', name: 'HRS' },
+            { file: 'logo_itt.svg', name: 'ITT' },
+            { file: 'logo_jae.svg', name: 'JAE' },
+            { file: 'logo_jst.svg', name: 'JST' },
+            { file: 'logo_molex.svg', name: 'Molex' },
+            { file: 'logo_samtec.svg', name: 'Samtec' },
+            { file: 'logo_wurth.svg', name: 'Würth' },
+            { file: 'logo_yazaki.svg', name: 'Yazaki' }
+        ];
+
+        soedinitelLogos.forEach(logo => {
+            const card = document.createElement('div');
+            card.className = 'lc-logo-card';
+            card.innerHTML = `
+                <img src="../assets/linecard/12+_SOEDINITEL/${logo.file}" 
+                     alt="${logo.name}" 
+                     loading="lazy" 
+                     width="120" height="64">
+                <span class="lc-logo-name">${logo.name}</span>
+            `;
+            soedinitelGrid.appendChild(card);
+        });
+
+        // =============================================
+        // Fade-in on scroll (same as main landing)
+        // =============================================
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.05 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // =============================================
+        // Sticky nav active state
+        // =============================================
+        const navLinks = document.querySelectorAll('.lc-cat-nav a');
+        const sections = document.querySelectorAll('.lc-category');
+
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    navLinks.forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+                    });
+                }
+            });
+        }, { threshold: 0.2, rootMargin: '-80px 0px -60% 0px' });
+
+        sections.forEach(sec => navObserver.observe(sec));
+    </script>
+
+</body>
+
+</html>
