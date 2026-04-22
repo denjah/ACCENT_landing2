@@ -433,11 +433,11 @@
                             <span class="lc-stat-label">Брендов</span>
                         </div>
                         <div class="lc-stat">
-                            <span class="lc-stat-num">5</span>
+                            <span class="lc-stat-num">6</span>
                             <span class="lc-stat-label">Категорий</span>
                         </div>
                         <div class="lc-stat">
-                            <span class="lc-stat-num">21</span>
+                            <span class="lc-stat-num">22</span>
                             <span class="lc-stat-label">Подкатегория</span>
                         </div>
                     </div>
@@ -458,6 +458,7 @@
                 <a href="#cat-power">Силовая электроника</a>
                 <a href="#cat-electromech">Электромеханика</a>
                 <a href="#cat-opto">Оптоэлектроника</a>
+                <a href="#cat-drones">БПЛА</a>
             </div>
         </div>
     </nav>
@@ -698,6 +699,27 @@
         </div>
     </div>
 
+    <!-- ===================== БПЛА ===================== -->
+    <div class="lc-category fade-in" id="cat-drones">
+        <div class="wide-container">
+            <div class="lc-category-header">
+                <div class="section-tag">БПЛА</div>
+                <h2>Комплектующие для БПЛА</h2>
+            </div>
+
+            <!-- 22_drones -->
+            <div class="lc-subcategory">
+                <div class="lc-sub-title"><span class="lc-sub-code">23</span> Комплектующие для БПЛА</div>
+                <div class="lc-logo-grid" id="grid-drones">
+                    <!-- populated via JS -->
+                </div>
+                <p class="lc-brand-list">Duaksky · GSTiR · Hitec · Hyperion · Kingmax · Leopard-Power · Plasti dip · RunCam</p>
+            </div>
+
+            <div class="lc-divider"></div>
+        </div>
+    </div>
+
     <!-- BOTTOM CTA -->
     <section class="lc-bottom-cta">
         <div class="wide-container">
@@ -809,6 +831,34 @@
                 <span class="lc-logo-name">${logo.name}</span>
             `;
             soedinitelGrid.appendChild(card);
+        });
+
+        // =============================================
+        // Drones — PNG logos with specific filenames
+        // =============================================
+        const dronesGrid = document.getElementById('grid-drones');
+        const droneLogos = [
+            { file: 'dualsky.png', name: 'Duaksky' },
+            { file: 'GSTIR.png', name: 'GSTiR' },
+            { file: 'hitec.png', name: 'Hitec' },
+            { file: 'hyperion.png', name: 'Hyperion' },
+            { file: 'kingmax.png', name: 'Kingmax' },
+            { file: 'leopard.png', name: 'Leopard-Power' },
+            { file: 'plastidip.png', name: 'Plasti dip' },
+            { file: 'runcam.png', name: 'RunCam' }
+        ];
+
+        droneLogos.forEach(logo => {
+            const card = document.createElement('div');
+            card.className = 'lc-logo-card';
+            card.innerHTML = `
+                <img src="../assets/linecard/22_drones/${logo.file}" 
+                     alt="${logo.name}" 
+                     loading="lazy" 
+                     width="120" height="64">
+                <span class="lc-logo-name">${logo.name}</span>
+            `;
+            dronesGrid.appendChild(card);
         });
 
         // =============================================
