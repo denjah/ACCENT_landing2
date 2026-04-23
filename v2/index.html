@@ -39,7 +39,7 @@
             <div class="header-contacts">
                 <a href="tel:+79643944133">+7 964 394 41 33</a>
                 <a href="mailto:info@accentcomponent.ru">info@accentcomponent.ru</a>
-                <button class="btn btn-primary" style="padding: 8px 20px; font-size: 12px;">Загрузить BOM</button>
+                <button class="btn btn-primary" style="padding: 8px 20px; font-size: 12px;" onclick="document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' })">Загрузить BOM</button>
                 <a href="presentation/index.html" class="btn btn-white" style="padding: 8px 20px; font-size: 12px; text-decoration: none;">ПРЕЗЕНТАЦИЯ</a>
             </div>
         </div>
@@ -368,13 +368,13 @@
     </section>
 
     <!-- 10. ФОРМА BOM -->
-    <section class="form-area fade-in" data-has-particles="light">
+    <section class="form-area fade-in" data-has-particles="light" id="contact-form">
         <div class="wide-container">
             <div class="form-split">
                 <div class="form-left-col">
                     <div class="section-tag">Заявка</div>
-                    <h2>Загрузите ваш BOM-файл</h2>
-                    <p style="font-size: 18px;">Получите расчет спецификации <em>в течение 1 часа</em>.</p>
+                    <h2>Связаться с нами</h2>
+                    <p style="font-size: 18px;">Получите расчет спецификации <em>в течение 72 часов</em>.</p>
                     <img src="assets/images/mascot/mascot_accent_08_sm.png" alt="Маскот заявки" class="mascot-form-img">
                 </div>
                 <div class="form-main">
@@ -405,6 +405,18 @@
                             </div>
                             <div class="input-group full" style="margin-top: 10px;">
                                 <button class="btn btn-primary" type="submit">ОТПРАВИТЬ ЗАЯВКУ</button>
+                            </div>
+                            <div class="input-group full consent-group" style="margin-top: 15px;">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" required id="consent1">
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-label">Нажимая кнопку «Отправить», я даю свое <a href="javascript:void(0)" id="open-consent-modal" style="color: var(--brand-red-500); text-decoration: underline;">согласие на обработку моих персональных данных</a>, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных *</span>
+                                </label>
+                                <label class="checkbox-container" style="margin-top: 10px;">
+                                    <input type="checkbox" id="consent2">
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-label">Я даю согласие на получение информационных и маркетинговых рассылок (вы в любой момент можете отказаться от получения писем)</span>
+                                </label>
                             </div>
                         </div>
                     </form>
@@ -591,7 +603,7 @@
                         <ul class="slide-list">
                             ${offer.list.map(item => `<li>${item}</li>`).join('')}
                         </ul>
-                        <button class="btn btn-primary">${offer.cta}</button>
+                        <button class="btn btn-primary" onclick="document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' })">${offer.cta}</button>
                     </div>
                     <div class="mascot-hero-wrap">
                         <img src="${offer.mascot}" alt="Mascot" class="${offer.flip ? 'mascot-flip' : ''}">
@@ -653,6 +665,54 @@
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 
+    <!-- Consent Modal -->
+    <div id="consent-modal" class="modal">
+        <div class="modal-content">
+            <h3>Согласие на обработку персональных данных</h3>
+            <div class="modal-body">
+                <p>В соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных», я даю согласие ООО «Акцент» на обработку моих персональных данных, указанных в форме заявки, для целей обработки моего запроса, связи со мной и предоставления информации о продукции и услугах компании.</p>
+                <p>Согласие предоставляется на совершение следующих действий с персональными данными: сбор, запись, систематизация, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передача (распространение, предоставление, доступ), обезличивание, блокирование, удаление, уничтожение персональных данных.</p>
+                <p>Настоящее согласие действует бессрочно и может быть отозвано мной в любое время путем направления письменного уведомления на электронную почту info@accentcomponent.ru.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="decline-consent">НЕ ПРИНИМАЮ</button>
+                <button class="btn btn-primary" id="accept-consent">ПРИНИМАЮ</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Consent Modal Logic
+        const modal = document.getElementById('consent-modal');
+        const openBtn = document.getElementById('open-consent-modal');
+        const acceptBtn = document.getElementById('accept-consent');
+        const declineBtn = document.getElementById('decline-consent');
+        const check1 = document.getElementById('consent1');
+
+        openBtn.onclick = function() {
+            modal.style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+
+        acceptBtn.onclick = function() {
+            check1.checked = true;
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        declineBtn.onclick = function() {
+            check1.checked = false;
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+    </script>
 </body>
 
 </html>

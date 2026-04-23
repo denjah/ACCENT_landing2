@@ -475,7 +475,8 @@
             <div class="lc-subcategory">
                 <div class="lc-sub-title"><span class="lc-sub-code">01</span> Микроконтроллеры / Микропроцессоры</div>
                 <div class="lc-logo-grid" data-folder="01_MICRO" data-prefix="01_MICRO_" data-count="13" data-ext="png"
-                     data-names="Ambiq,Epson,Infineon,MaxLinear,Microchip,NXP,Nexperia,QuickLogic,Renesas,ROHM,STMicroelectronics,WIZnet,Zilog">
+                     data-extra="intel.svg,autochips.svg,texas_instrument.svg,chipon.svg,nation.svg,hisiwell.svg,pai.svg,neditec.svg"
+                     data-names="Ambiq,Epson,Infineon,MaxLinear,Microchip,NXP,Nexperia,QuickLogic,Renesas,ROHM,STMicroelectronics,WIZnet,Zilog,intel,autochips,texas_instrument,chipon,nation,hisiwell,pai,neditec">
                 </div>
             </div>
 
@@ -483,7 +484,8 @@
             <div class="lc-subcategory">
                 <div class="lc-sub-title"><span class="lc-sub-code">02</span> Память</div>
                 <div class="lc-logo-grid" data-folder="03_PANATJ" data-prefix="PAMATJ_" data-count="20" data-ext="png"
-                     data-names="ADATA,Alliance Memory,Centon,Everspin,GigaDevice,Greenliant,Infineon,Kingston,Macronix,MaxLinear,Microchip,NXP,ONsemi,Panasonic,Renesas,ROHM,SkyHigh Memory,STMicroelectronics,TDK,Unigen">
+                     data-extra="Netac.svg,Giantec Semiconduktor.svg,SCY.svg,Longsys.svg,Hiksemi.svg"
+                     data-names="ADATA,Alliance Memory,Centon,Everspin,GigaDevice,Greenliant,Infineon,Kingston,Macronix,MaxLinear,Microchip,NXP,ONsemi,Panasonic,Renesas,ROHM,SkyHigh Memory,STMicroelectronics,TDK,Unigen,Netac,Giantec Semiconduktor,SCY,Longsys,Hiksemi">
                 </div>
             </div>
 
@@ -683,7 +685,8 @@
             <div class="lc-subcategory">
                 <div class="lc-sub-title"><span class="lc-sub-code">21</span> Дисплеи</div>
                 <div class="lc-logo-grid" data-folder="20_DISPLAY" data-prefix="20_DISPLAY_" data-count="4" data-ext="png"
-                     data-names="Advantech,AZ Displays,Lumex,Winstar Display">
+                     data-extra="BOE.svg,Eastern Display.svg,DLC-display.svg"
+                     data-names="Advantech,AZ Displays,Lumex,Winstar Display,BOE,Eastern Display,DLC-display">
                 </div>
             </div>
 
@@ -779,6 +782,7 @@
             const ext = grid.dataset.ext || 'png';
             const start = parseInt(grid.dataset.start || '1', 10);
             const names = (grid.dataset.names || '').split(',').map(n => n.trim()).filter(Boolean);
+            const extraLogos = (grid.dataset.extra || '').split(',').map(n => n.trim()).filter(Boolean);
 
             // Render logo cards (without text names — file order ≠ brand order)
             for (let i = 0; i < count; i++) {
@@ -795,6 +799,19 @@
                 `;
                 grid.appendChild(card);
             }
+
+            // Render extra explicit logos
+            extraLogos.forEach(filename => {
+                const card = document.createElement('div');
+                card.className = 'lc-logo-card';
+                card.innerHTML = `
+                    <img src="../assets/linecard/${folder}/${filename}" 
+                         alt="Производитель" 
+                         loading="lazy" 
+                         width="120" height="64">
+                `;
+                grid.appendChild(card);
+            });
 
             // Add brand name text list below grid for SEO & reference
             if (names.length > 0) {
@@ -817,7 +834,11 @@
             { file: 'logo_molex.svg', name: 'Molex' },
             { file: 'logo_samtec.svg', name: 'Samtec' },
             { file: 'logo_wurth.svg', name: 'Würth' },
-            { file: 'logo_yazaki.svg', name: 'Yazaki' }
+            { file: 'logo_yazaki.svg', name: 'Yazaki' },
+            { file: 'Golten.svg', name: 'Golten' },
+            { file: 'wanjie.svg', name: 'wanjie' },
+            { file: 'degson.svg', name: 'degson' },
+            { file: 'Jialong.svg', name: 'Jialong' }
         ];
 
         soedinitelLogos.forEach(logo => {

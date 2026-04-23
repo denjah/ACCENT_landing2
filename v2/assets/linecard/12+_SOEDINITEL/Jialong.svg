@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 395.92 436.32">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: TimesNewRomanPS-BoldMT, 'Times New Roman';
+        font-size: 80.63px;
+        font-weight: 700;
+        letter-spacing: .06em;
+      }
+
+      .cls-2 {
+        fill: #d85820;
+      }
+    </style>
+  </defs>
+  <g>
+    <g>
+      <path class="cls-2" d="M238.51,12.61v258.14c0,.78,11.24,9.03,12.64,9.03h92.06v39.71h-131.78c-3.75,0-12.64-8.89-12.64-12.64V12.61h39.71Z"/>
+      <path class="cls-2" d="M285.44,12.61v203.99c0,19.92,45.17,16.9,57.79,16.23l-.02,39.73h-81.23c-1.9,0-16.25-11.19-16.25-12.64V12.61h39.71Z"/>
+    </g>
+    <g>
+      <circle class="cls-2" cx="136.53" cy="44.14" r="44.14"/>
+      <g>
+        <path class="cls-2" d="M173.52,319.5H36.33v-39.71h92.06c.89,0,12.64-11.74,12.64-12.64V120.92c12.57,2.13,36.48-6.92,39.71,9.03l-7.22,189.54Z"/>
+        <path class="cls-2" d="M133.81,120.92v131.78c0,5.07-10.59,19.86-16.25,19.86H36.33l-.02-39.73c12.21,2.79,57.79.15,57.79-16.23v-95.68h39.71Z"/>
+      </g>
+    </g>
+  </g>
+  <text class="cls-1" transform="translate(0 409.9)"><tspan x="0" y="0">JIALONG</tspan></text>
+</svg>
