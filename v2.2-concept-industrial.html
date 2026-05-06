@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Акцент | Поставка электронных компонентов</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Design Tokens CSS -->
+    <style>
+        :root {
+            /* Colors */
+            --brand-red-50:  #FCE8EB;
+            --brand-red-100: #F8C0C8;
+            --brand-red-300: #ED6E84;
+            --brand-red-500: #C41E3A;
+            --brand-red-700: #93162C;
+            --brand-red-900: #5C0E1C;
+            --gray-50:  #F8F9FA;
+            --gray-100: #F1F3F5;
+            --gray-200: #E9ECEF;
+            --gray-400: #CED4DA;
+            --gray-600: #868E96;
+            --gray-800: #343A40;
+            --gray-900: #212529;
+            --white:    #FFFFFF;
+
+            /* Semantic Colors */
+            --color-primary-base:   var(--brand-red-500);
+            --color-primary-hover:  var(--brand-red-700);
+            --color-primary-active: var(--brand-red-900);
+            --color-bg-canvas:      var(--gray-50);
+            --color-bg-surface:     var(--white);
+            --color-bg-elevated:    var(--gray-100);
+            --color-text-main:      var(--gray-800);
+            --color-text-heading:   var(--gray-900);
+            --color-text-muted:     var(--gray-600);
+            --color-text-inverse:   var(--white);
+            --color-border-default: var(--gray-200);
+            --color-border-input:   var(--gray-400);
+
+            /* Radii & Shadows */
+            --radius-none: 0px;
+            --radius-sm:   4px;
+            --radius-md:   6px;
+            --radius-lg:   8px;
+            --shadow-sm: 0 1px 2px rgba(33, 37, 41, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(33, 37, 41, 0.10);
+        }
+
+        body {
+            background-color: var(--color-bg-canvas);
+            color: var(--color-text-main);
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--color-text-heading);
+            letter-spacing: -0.01em;
+        }
+
+        .font-mono {
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        /* Purposeful Motion Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Specific Component Styles mapping to tokens */
+        .btn-primary {
+            background-color: var(--color-primary-base);
+            color: var(--color-text-inverse);
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease-in-out;
+            font-weight: 600;
+        }
+        .btn-primary:hover {
+            background-color: var(--color-primary-hover);
+        }
+        .btn-primary:active {
+            background-color: var(--color-primary-active);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-text-main);
+            border: 1px solid var(--color-border-input);
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease-in-out;
+            font-weight: 600;
+        }
+        .btn-secondary:hover {
+            color: var(--color-primary-base);
+            border-color: var(--color-primary-base);
+        }
+
+        .input-base {
+            background-color: var(--color-bg-surface);
+            border: 1px solid var(--color-border-input);
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease-in-out;
+        }
+        .input-base:focus {
+            outline: none;
+            border-color: var(--color-primary-base);
+            box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.3);
+        }
+
+        .card {
+            background-color: var(--color-bg-surface);
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease-in-out;
+        }
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        
+        .section-border-bottom {
+            border-bottom: 1px solid var(--color-border-default);
+        }
+    </style>
+
+    <!-- Tailwind Setup -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            500: 'var(--brand-red-500)',
+                        },
+                        surface: 'var(--color-bg-surface)',
+                        canvas: 'var(--color-bg-canvas)',
+                        muted: 'var(--color-text-muted)'
+                    },
+                    spacing: {
+                        'grid-gutter': '24px',
+                        'section': '80px',
+                    },
+                    maxWidth: {
+                        'grid': '1440px',
+                        'content': '800px'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white border-b border-[var(--color-border-default)]">
+        <div class="max-w-grid mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <a href="#" class="text-2xl font-bold tracking-tighter text-[var(--color-text-heading)]">АКЦЕНТ<span class="text-brand-500">.</span></a>
+                <div class="hidden md:flex gap-6 text-sm font-medium">
+                    <a href="#linecard" class="text-[var(--color-text-muted)] hover:text-[var(--color-text-main)] transition-colors">Linecard</a>
+                    <a href="#logistics" class="text-[var(--color-text-muted)] hover:text-[var(--color-text-main)] transition-colors">Логистика</a>
+                    <a href="#bom" class="text-[var(--color-text-muted)] hover:text-[var(--color-text-main)] transition-colors">Оценка BOM</a>
+                </div>
+            </div>
+            <a href="#bom" class="btn-primary px-6 py-2 text-sm hidden md:inline-flex">Загрузить BOM</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="section-border-bottom bg-white pt-20 pb-24 px-6 relative overflow-hidden">
+        <!-- Abstract Engineering Grid background -->
+        <div class="absolute inset-0 pointer-events-none opacity-[0.03]" style="background-image: linear-gradient(var(--gray-900) 1px, transparent 1px), linear-gradient(90deg, var(--gray-900) 1px, transparent 1px); background-size: 40px 40px;"></div>
+        
+        <div class="max-w-grid mx-auto grid grid-cols-1 md:grid-cols-12 gap-grid-gutter relative z-10">
+            <div class="md:col-span-8 lg:col-span-7 reveal">
+                <div class="inline-block px-3 py-1 mb-6 border border-[var(--color-border-default)] rounded-[var(--radius-sm)] text-xs font-mono font-medium tracking-wide uppercase">
+                    B2B Дистрибуция • 2026
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-6">
+                    Прямые поставки <br class="hidden lg:block"/>
+                    электронных компонентов <br class="hidden lg:block"/>
+                    для <span class="text-brand-500">промышленности</span>
+                </h1>
+                <p class="text-lg text-[var(--color-text-muted)] mb-10 max-w-content leading-relaxed">
+                    Оптимизация BOM, параллельный импорт и прямые контракты с азиатскими фабриками. Снижаем себестоимость производства без потери качества.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#bom" class="btn-primary px-8 py-3 text-base">Оценить проект</a>
+                    <a href="#linecard" class="btn-secondary px-8 py-3 text-base">Смотреть linecard</a>
+                </div>
+            </div>
+            
+            <!-- Quick Stats -->
+            <div class="md:col-span-4 lg:col-span-4 lg:col-start-9 flex flex-col justify-center gap-6 mt-12 md:mt-0 reveal" style="transition-delay: 100ms;">
+                <div class="border-l-2 border-[var(--color-border-default)] pl-6 py-1">
+                    <div class="text-3xl font-bold font-mono text-[var(--color-text-heading)] mb-1">До <span class="text-brand-500">20%</span></div>
+                    <div class="text-sm text-[var(--color-text-muted)]">Экономия на закупках по сравнению с локальными складами</div>
+                </div>
+                <div class="border-l-2 border-[var(--color-border-default)] pl-6 py-1">
+                    <div class="text-3xl font-bold font-mono text-[var(--color-text-heading)] mb-1">7-14 <span class="text-lg">дней</span></div>
+                    <div class="text-sm text-[var(--color-text-muted)]">Средний срок доставки образцов с фабрик Азии</div>
+                </div>
+                <div class="border-l-2 border-[var(--color-border-default)] pl-6 py-1">
+                    <div class="text-3xl font-bold font-mono text-[var(--color-text-heading)] mb-1">100%</div>
+                    <div class="text-sm text-[var(--color-text-muted)]">Входной контроль и гарантия качества компонентов</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Linecard Preview -->
+    <section id="linecard" class="py-section px-6 section-border-bottom bg-[var(--color-bg-canvas)]">
+        <div class="max-w-grid mx-auto reveal">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <h2 class="text-3xl font-bold mb-3">Linecard &amp; Производители</h2>
+                    <p class="text-[var(--color-text-muted)] max-w-2xl">Работаем напрямую с проверенными фабриками Китая и Тайваня. Официальные дистрибьюторские контракты.</p>
+                </div>
+                <a href="#" class="text-brand-500 font-medium hover:text-[var(--color-primary-hover)] transition-colors flex items-center gap-2">
+                    Полный список
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-grid-gutter">
+                <!-- Category Card -->
+                <div class="card p-6">
+                    <h3 class="font-bold text-lg mb-4">Микроконтроллеры</h3>
+                    <ul class="space-y-3 font-mono text-sm">
+                        <li class="flex items-center justify-between"><span class="text-[var(--color-text-main)]">GigaDevice</span> <span class="text-[var(--color-text-muted)] text-xs">Direct</span></li>
+                        <li class="flex items-center justify-between"><span class="text-[var(--color-text-main)]">Artery</span> <span class="text-[var(--color-text-muted)] text-xs">Direct</span></li>
+                        <li class="flex items-center justify-between"><span class="text-[var(--color-text-main)]">Geehy</span> <span class="text-[var(--color-text-muted)] text-xs">Direct</span></li>
+                        <li class="flex items-center justify-between"><span class="text-[var(--color-text-main)]">MindMotion</span> <span class="text-[var(--color-text-muted)] text-xs">Stock</span></li>
+                    </ul>
+                </div>
+                <!-- Category Card -->
+                <div class="card p-6">
+                    <h3 class="font-bold text-lg mb-4">Память (Flash/RAM)</h3>
+                    <ul class="space-y-3 font-mono text-sm">
+                        <li class="flex items-center justify-between"><span class="text-[var(--color-text-main)]">Winbond</span> <span class="text-[var(--color-text-muted)] text-xs">Stock</span></li>
+                        <li class="flex items-center justify-between"><span class="text-[var(--color-text-main)]">Macronix</span> <span class="text-[var(--color-text-muted)] text-xs">Stock</span></li>
+                        <li class="flex items-center justify-between"><span class="text-[var(--color-text-main)]">Puya</span> <span class="text-[var(--color-text-muted)] text-xs">Direct</span></li>
+                        <li class="flex items-center justify-between"><span class="text-[var(--color-text-main)]">Fudan Micro</span> <span class="text-[var(--color-text-muted)] text-xs">Direct</span></li>
+                    </ul>
+                </div>
+                <!-- Category Card -->
+                <div class="card p-6">
+                    <h3 class="font-bold text-lg mb-4">Интерфейсы / Логика</h3>
+                    <ul class="space-y-3 font-mono text-sm">
+                        <li class="flex items-center justify-between"><span class="text-[var(--color-text-main)]">3PEAK</span> <span class="text-[var(--color-text-muted)] text-xs">Direct</span></li>
+                        <li class="flex items-center justify-between"><span class="text-[var(--color-text-main)]">SGMICRO</span> <span class="text-[var(--color-text-muted)] text-xs">Direct</span></li>
+                        <li class="flex items-center justify-between"><span class="text-[var(--color-text-main)]">Nexperia</span> <span class="text-[var(--color-text-muted)] text-xs">Stock</span></li>
+                        <li class="flex items-center justify-between"><span class="text-[var(--color-text-main)]">RunIC</span> <span class="text-[var(--color-text-muted)] text-xs">Direct</span></li>
+                    </ul>
+                </div>
+                <!-- Category Card -->
+                <div class="card p-6">
+                    <h3 class="font-bold text-lg mb-4">Пассивные компоненты</h3>
+                    <ul class="space-y-3 font-mono text-sm">
+                        <li class="flex items-center justify-between"><span class="text-[var(--color-text-main)]">Yageo</span> <span class="text-[var(--color-text-muted)] text-xs">Stock</span></li>
+                        <li class="flex items-center justify-between"><span class="text-[var(--color-text-main)]">Murata</span> <span class="text-[var(--color-text-muted)] text-xs">Stock</span></li>
+                        <li class="flex items-center justify-between"><span class="text-[var(--color-text-main)]">Samsung</span> <span class="text-[var(--color-text-muted)] text-xs">Stock</span></li>
+                        <li class="flex items-center justify-between"><span class="text-[var(--color-text-main)]">FH</span> <span class="text-[var(--color-text-muted)] text-xs">Direct</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOM Form Section -->
+    <section id="bom" class="py-section px-6 bg-white">
+        <div class="max-w-[800px] mx-auto reveal">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold mb-4">Оценка спецификации (BOM)</h2>
+                <p class="text-[var(--color-text-muted)]">Загрузите перечень компонентов. Мы подберем прямые аналоги, проверим доступность на фабриках и дадим расчет стоимости с учетом логистики.</p>
+            </div>
+            
+            <form id="bom-form" class="card p-8 flex flex-col gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex flex-col gap-2">
+                        <label for="name" class="text-sm font-medium text-[var(--color-text-heading)]">Имя / Компания *</label>
+                        <input type="text" id="name" required class="input-base px-4 py-2 w-full" placeholder="ООО Инжиниринг">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label for="email" class="text-sm font-medium text-[var(--color-text-heading)]">Email *</label>
+                        <input type="email" id="email" required class="input-base px-4 py-2 w-full" placeholder="zakupki@company.ru">
+                    </div>
+                </div>
+                
+                <div class="flex flex-col gap-2">
+                    <label for="file" class="text-sm font-medium text-[var(--color-text-heading)]">BOM файл (Excel, CSV) *</label>
+                    <div class="relative w-full border-2 border-dashed border-[var(--color-border-input)] rounded-[var(--radius-sm)] p-8 text-center hover:border-brand-500 transition-colors bg-[var(--color-bg-canvas)]">
+                        <input type="file" id="file" required class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept=".xlsx,.xls,.csv">
+                        <svg class="mx-auto h-8 w-8 text-[var(--color-text-muted)] mb-2" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <p class="text-sm text-[var(--color-text-muted)]">Перетащите файл сюда или нажмите для выбора</p>
+                        <p class="text-xs text-[var(--color-text-muted)] mt-1">До 10 МБ</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label for="comment" class="text-sm font-medium text-[var(--color-text-heading)]">Комментарий (опционально)</label>
+                    <textarea id="comment" rows="3" class="input-base px-4 py-2 w-full resize-none" placeholder="Укажите целевые цены, объемы или другие требования..."></textarea>
+                </div>
+
+                <div class="pt-4 border-t border-[var(--color-border-default)] flex items-center justify-between">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" required class="w-4 h-4 text-brand-500 border-[var(--color-border-input)] rounded focus:ring-brand-500">
+                        <span class="text-xs text-[var(--color-text-muted)]">Согласие на обработку ПД</span>
+                    </label>
+                    <button type="submit" class="btn-primary px-8 py-3">Отправить на расчет</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[var(--color-text-heading)] text-white py-12 px-6 mt-auto">
+        <div class="max-w-grid mx-auto flex flex-col md:flex-row justify-between items-start gap-8">
+            <div>
+                <div class="text-2xl font-bold tracking-tighter mb-4">АКЦЕНТ<span class="text-brand-500">.</span></div>
+                <p class="text-[var(--color-text-muted)] text-sm max-w-xs">Оптовые поставки электронных компонентов для инженерных и производственных компаний.</p>
+            </div>
+            <div class="text-right">
+                <a href="mailto:info@accent.ru" class="block text-lg hover:text-brand-500 transition-colors mb-1">info@accent.ru</a>
+                <a href="tel:+78000000000" class="block text-lg hover:text-brand-500 transition-colors mb-4">+7 (800) 000-00-00</a>
+                <p class="text-xs text-[var(--color-text-muted)]">© 2026 ООО "Акцент". Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Purposeful Motion Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Mock form submission
+            document.getElementById('bom-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = e.target.querySelector('button[type="submit"]');
+                const originalText = btn.innerText;
+                btn.innerText = 'Отправка...';
+                btn.disabled = true;
+                btn.style.opacity = '0.7';
+                
+                setTimeout(() => {
+                    btn.innerText = 'Успешно отправлено';
+                    btn.style.backgroundColor = 'var(--color-success, #027A48)';
+                    e.target.reset();
+                    
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                        btn.disabled = false;
+                        btn.style.opacity = '1';
+                        btn.style.backgroundColor = '';
+                    }, 3000);
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>

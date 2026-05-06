@@ -699,6 +699,39 @@
         }, { root: mainScroller, threshold: 0.55 });
 
         sections.forEach(s => idxObserver.observe(s));
+
+        // Магнитные кнопки
+        document.addEventListener('mousemove', (e) => {
+            let closestBtn = null;
+            let minDistance = 100; // Радиус 100px
+
+            const buttons = document.querySelectorAll('.btn');
+            
+            buttons.forEach(btn => {
+                const rect = btn.getBoundingClientRect();
+                const btnX = rect.left + rect.width / 2;
+                const btnY = rect.top + rect.height / 2;
+                
+                const distanceX = e.clientX - btnX;
+                const distanceY = e.clientY - btnY;
+                const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+                
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestBtn = { btn, pullX: distanceX * 0.15, pullY: distanceY * 0.15 };
+                }
+            });
+
+            buttons.forEach(btn => {
+                if (closestBtn && closestBtn.btn === btn) {
+                    btn.style.transition = 'transform 0.1s ease-out';
+                    btn.style.transform = `translate(${closestBtn.pullX}px, ${closestBtn.pullY}px)`;
+                } else {
+                    btn.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    btn.style.transform = `translate(0px, 0px)`;
+                }
+            });
+        });
     </script>
 
 </body>

@@ -396,6 +396,41 @@
                 transform: none !important;
             }
         }
+
+        /* Print styles for PDF export */
+        @media print {
+            @page {
+                size: A4 landscape;
+                margin: 10mm;
+            }
+            body {
+                background: #fff;
+            }
+            .header, .lc-hero, .lc-cat-nav, .lc-bottom-cta, .footer {
+                display: none !important;
+            }
+            .lc-category {
+                border-bottom: none;
+                padding: 10px 0;
+                background: #fff !important;
+            }
+            .lc-logo-card {
+                border: 1px solid #eee;
+                box-shadow: none !important;
+                page-break-inside: avoid;
+                min-height: 80px;
+            }
+            .lc-logo-card img {
+                filter: grayscale(0%) !important;
+                opacity: 1 !important;
+            }
+            .lc-sub-title {
+                page-break-after: avoid;
+            }
+            .lc-subcategory {
+                /* Allow breaking within a subcategory grid */
+            }
+        }
     </style>
 </head>
 
@@ -426,7 +461,7 @@
                     <div class="section-tag">Linecard</div>
                     <h1>Полный список производителей</h1>
                     <p class="lc-hero-sub">70+ мировых брендов электронных компонентов — от активных и пассивных до силовой электроники и оптоэлектроники</p>
-                    <a href="#" class="btn btn-primary" id="download-pdf-top">Скачать PDF-каталог</a>
+                    <a href="../presentation/PDF/linecard.pdf" download="Linecard_ACCENT_2026.pdf" class="btn btn-primary" id="download-pdf-top">Скачать PDF-каталог</a>
                     <div class="lc-stats">
                         <div class="lc-stat">
                             <span class="lc-stat-num">70+</span>
@@ -474,7 +509,7 @@
             <!-- 01_MICRO -->
             <div class="lc-subcategory">
                 <div class="lc-sub-title"><span class="lc-sub-code">01</span> Микроконтроллеры / Микропроцессоры</div>
-                <div class="lc-logo-grid" data-folder="01_MICRO" data-prefix="01_MICRO_" data-count="13" data-ext="png"
+                <div class="lc-logo-grid" data-folder="01_MICRO" data-prefix="01_MICRO_" data-count="12" data-ext="png"
                      data-extra="intel.svg,autochips.svg,texas_instrument.svg,chipon.svg,nation.svg,hisiwell.svg,pai.svg,neditec.svg"
                      data-names="Ambiq,Epson,Infineon,MaxLinear,Microchip,NXP,Nexperia,QuickLogic,Renesas,ROHM,STMicroelectronics,WIZnet,Zilog,intel,autochips,texas_instrument,chipon,nation,hisiwell,pai,neditec">
                 </div>
@@ -492,7 +527,7 @@
             <!-- 02_INTERF -->
             <div class="lc-subcategory">
                 <div class="lc-sub-title"><span class="lc-sub-code">03</span> Интерфейсы</div>
-                <div class="lc-logo-grid" data-folder="02_INTERF" data-prefix="03_ИНТЕРФЕЙСЫ_" data-count="19" data-ext="png"
+                <div class="lc-logo-grid" data-folder="02_INTERF" data-prefix="03_ИНТЕРФЕЙСЫ_" data-count="18" data-ext="png"
                      data-names="Diodes Inc.,FTDI Chip,IK Semicon,Infineon,Littelfuse,MaxLinear,Microchip,MPS,Nexperia,NXP,ONsemi,Pericom,Renesas,Richtek,ROHM,ScioSense,Semtech,Siergy,STMicroelectronics">
                 </div>
             </div>
@@ -500,7 +535,7 @@
             <!-- 05_DISCRET -->
             <div class="lc-subcategory">
                 <div class="lc-sub-title"><span class="lc-sub-code">04</span> Дискретные компоненты</div>
-                <div class="lc-logo-grid" data-folder="05_DISCRET" data-prefix="05_DISCRET_" data-start="34" data-count="31" data-ext="png"
+                <div class="lc-logo-grid" data-folder="05_DISCRET" data-prefix="05_DISCRET_" data-start="34" data-count="30" data-ext="png"
                      data-names="Calogic,CEL,Central Semi,Diodes Inc.,Eaton,Infineon,Isocom,KYOCERA AVX,Littelfuse,IXYS,MCC,Microchip,Murata PS,Nexperia,NIC,NXP,ONsemi,Panasonic,Power Integrations,ProTek,Pulse Elec.,Renesas,ROHM,Schurter,SMC,Stackpole,Surge,Taiwan Semi,TDK,Vishay,Yageo">
                 </div>
             </div>
@@ -508,7 +543,7 @@
             <!-- 04_LOGIC -->
             <div class="lc-subcategory">
                 <div class="lc-sub-title"><span class="lc-sub-code">05</span> Логика</div>
-                <div class="lc-logo-grid" data-folder="04_LOGIC" data-prefix="04_LOGIC_" data-start="15" data-count="19" data-ext="png"
+                <div class="lc-logo-grid" data-folder="04_LOGIC" data-prefix="04_LOGIC_" data-start="15" data-count="18" data-ext="png"
                      data-names="Abracon,Alliance Memory,Altech,Diodes Inc.,Efinix,IK Semicon,Infineon,Littelfuse,Microchip,Nexperia,NXP,Nisshinbo,NXP,ONsemi,Pericom,Renesas,ROHM,Socle,STMicroelectronics">
                 </div>
             </div>
@@ -556,7 +591,7 @@
             <!-- 11_DRIVERS -->
             <div class="lc-subcategory">
                 <div class="lc-sub-title"><span class="lc-sub-code">11</span> Драйвера IGBT</div>
-                <div class="lc-logo-grid" data-folder="11_DRIVERS" data-prefix="11_DRIVERS_" data-count="7" data-ext="png"
+                <div class="lc-logo-grid" data-folder="11_DRIVERS" data-prefix="11_DRIVERS_" data-count="6" data-ext="png"
                      data-names="Diodes Inc.,ONsemi,STMicroelectronics,Littelfuse,Infineon,Panasonic,Vishay">
                 </div>
             </div>
@@ -729,7 +764,7 @@
             <h2>Нужен компонент из нашего каталога?</h2>
             <div class="lc-cta-buttons">
                 <a href="../index.html" class="btn btn-outline" style="color: var(--gray-400); border-color: var(--gray-600);">Вернуться на главный сайт</a>
-                <a href="#" class="btn btn-primary" id="download-pdf-bottom">Скачать полный PDF</a>
+                <a href="../presentation/PDF/linecard.pdf" download="Linecard_ACCENT_2026.pdf" class="btn btn-primary" id="download-pdf-bottom">Скачать полный PDF</a>
             </div>
         </div>
     </section>
@@ -913,6 +948,39 @@
         }, { threshold: 0.2, rootMargin: '-80px 0px -60% 0px' });
 
         sections.forEach(sec => navObserver.observe(sec));
+
+        // Магнитные кнопки
+        document.addEventListener('mousemove', (e) => {
+            let closestBtn = null;
+            let minDistance = 100; // Радиус 100px
+
+            const buttons = document.querySelectorAll('.btn');
+            
+            buttons.forEach(btn => {
+                const rect = btn.getBoundingClientRect();
+                const btnX = rect.left + rect.width / 2;
+                const btnY = rect.top + rect.height / 2;
+                
+                const distanceX = e.clientX - btnX;
+                const distanceY = e.clientY - btnY;
+                const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+                
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestBtn = { btn, pullX: distanceX * 0.15, pullY: distanceY * 0.15 };
+                }
+            });
+
+            buttons.forEach(btn => {
+                if (closestBtn && closestBtn.btn === btn) {
+                    btn.style.transition = 'transform 0.1s ease-out';
+                    btn.style.transform = `translate(${closestBtn.pullX}px, ${closestBtn.pullY}px)`;
+                } else {
+                    btn.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    btn.style.transform = `translate(0px, 0px)`;
+                }
+            });
+        });
     </script>
 
 </body>
